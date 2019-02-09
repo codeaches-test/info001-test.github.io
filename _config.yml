@@ -18,7 +18,7 @@ description: Spring Boot, Spring Cloud and Web Development tutorials
 
 baseurl: "" # the subpath of your site, e.g. /blog
 
-url: "https://info-001.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://info001-test.github.io/info-001.github.io/ " # the base hostname & protocol for your site, e.g. http://example.com
 
 permalink: pretty
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]

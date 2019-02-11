@@ -11,9 +11,3 @@ disqus_enabled: true
 ---
 
 Test
-
-    foo
-
-In the words of Abraham Lincoln:
-
-> Pardon my French

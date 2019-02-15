@@ -3,7 +3,11 @@ layout: default
 title: "Deploy artifacts to OSSRH"
 nav_order: 100
 references_file: references.md
-permalink: /apache-maven-deploy-jar-to-ossrh-central-repository
+
+nav_order: 1
+parent: "Apache Maven"
+
+permalink: /maven/deploy-jar-to-ossrh-central-repository
 
 gh-repo: codeaches/sample-ossrh-deploy-codebase
 gh-badge: [star, watch, follow]

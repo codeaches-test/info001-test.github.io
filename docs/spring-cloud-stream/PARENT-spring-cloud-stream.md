@@ -3,7 +3,7 @@ layout: default
 title: "Spring Cloud Stream"
 nav_order: 300
 has_children: true
-permalink: /spring-cloud-stream/
+permalink: /spring-cloud-stream
 ---
 
 # Introduction to Spring Cloud Stream

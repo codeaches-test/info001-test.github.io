@@ -1,13 +1,13 @@
 {
-  "name": "just-the-docs",
-  "version": "0.2.3",
-  "description": "A modern Jekyll theme for documentation",
-  "repository": "pmarsceill/just-the-docs",
+  "name": "codeaches",
+  "version": "1.0.0",
+  "description": "Code for https://codeaches.com",
+  "repository": "codeaches",
   "license": "MIT",
-  "bugs": "https://github.com/pmarsceill/just-the-docs/issues",
+  "bugs": "https://github.com/codeaches/issues",
   "devDependencies": {
     "stylelint": "^9.10.1",
-    "stylelint-config-primer": "^4.0.0"
+    "stylelint-config-primer": "^5.0.0"
   },
   "dependencies": {},
   "scripts": {

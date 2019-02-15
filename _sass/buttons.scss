@@ -116,16 +116,3 @@
 .btn-green {
   @include btn-color($white, $green-100);
 }
-
-#github-codebase-post-section {
-  text-align: center;
-  font-family: inherit;
-  font-size: inherit;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#paypal-donate-section {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}

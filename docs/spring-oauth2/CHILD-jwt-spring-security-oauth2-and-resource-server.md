@@ -4,7 +4,7 @@ title: "OAuth2 Spring Security using JWT"
 nav_order: 2
 parent: "Spring Security Oauth2 Service"
 references_file: references.md
-permalink: /jwt-spring-security-oauth2-and-resource-server/
+permalink: /spring-security/jwt-oauth2-and-resource-server
 
 gh-repo: codeaches/jwt-oauth2-and-resource-servers
 gh-badge: [star, watch, follow]

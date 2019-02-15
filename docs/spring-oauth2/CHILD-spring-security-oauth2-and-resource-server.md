@@ -4,7 +4,7 @@ title: "OAuth2 Spring Security using JdbcTokenStore"
 nav_order: 1
 parent: "Spring Security Oauth2 Service"
 references_file: references.md
-permalink: /spring-security-oauth2-and-resource-server/
+permalink: /spring-security/oauth2-and-resource-server
 
 gh-repo: codeaches/oauth2-and-resource-servers
 gh-badge: [star, watch, follow]

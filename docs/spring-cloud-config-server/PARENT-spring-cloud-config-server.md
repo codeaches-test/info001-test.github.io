@@ -3,7 +3,7 @@ layout: default
 title: "Spring Cloud Config Server"
 nav_order: 300
 has_children: true
-permalink: /spring-cloud-config-server/
+permalink: /spring-cloud-config
 ---
 
 # Introduction to Spring Cloud Config Server

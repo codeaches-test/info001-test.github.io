@@ -6,7 +6,7 @@ nav_order: 5
 parent: "Spring Cloud Stream"
 
 references_file: references.md
-permalink: /spring-cloud-deploy-scdf-to-pcf
+permalink: /spring-cloud-stream/deploy-scdf-to-pcf
 
 gh-repo: codeaches/scdf-pcf-stream
 gh-badge: [star, watch, follow]

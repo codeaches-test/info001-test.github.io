@@ -7,7 +7,7 @@ parent: "Spring Cloud Stream"
 
 references_file: references.md
 
-permalink: /spring-cloud-create-stream-using-scdf
+permalink: /spring-cloud-stream/create-stream-using-scdf
 
 gh-repo: codeaches/scdf-pcf-stream
 gh-badge: [star, watch, follow]

@@ -3,7 +3,7 @@ layout: default
 title: Spring Security Oauth2 Service
 nav_order: 200
 has_children: true
-permalink: /blog/spring-security-oauth2/
+permalink: /spring-security
 ---
 
 # Spring Security Oauth2 Service

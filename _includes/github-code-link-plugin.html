@@ -1,9 +1,8 @@
 {% if page.github-codebase-post-link %}
-{% if page.gh-repo %}
-  <div id="github-codebase-post-section">
-    <a class="btn btn-purple" href="https://github.com/{{page.gh-repo}}" target="_blank">
-      Download the code on Github
-    </a>
-  </div>
+	{% if page.gh-repo %}
+    <div class="text-center">
+		<a class="btn btn-primary" href="https://github.com/{{page.gh-repo}}" target="_blank">Download the code on Github</a>
+	</div>
+	{% endif %}
 {% endif %}
-{% endif %}
+

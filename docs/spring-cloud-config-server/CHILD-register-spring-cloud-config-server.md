@@ -7,7 +7,7 @@ parent: "Spring Cloud Config Server"
 
 references_file: references.md
 
-permalink: /register-spring-cloud-config-server
+permalink: /spring-cloud-config/register-spring-cloud-config-server-on-cloudfoundry
 
 gh-repo: codeaches/config-client-pcf-app
 gh-badge: [star, watch, follow]

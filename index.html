@@ -11,29 +11,6 @@ paypal-donate-button: false
 ---
 
 <div id="list-posts-home">
-  <h2>Latest Tutorials</h2>
-  <ul class="list-posts-home">
-  {% assign pages_list = site.html_pages | sort:"date" | reverse %}
-
-  {% for node in pages_list %}
-      {% unless node.nav_exclude %}
-        {% if node.has_children == nil and node.title != "Home" %}
-		
-		  
-			{% assign today = site.time | date: '%s' %}
-			{% assign start = node.date | date: '%s' %}
-			{% assign secondsSince = today | minus: start %}
-			{% assign hoursSince = secondsSince | divided_by: 60 | divided_by: 60     %}
-			{% assign daysSince = hoursSince | divided_by: 24  %}
-			
-			{% if daysSince < 30 %}
-				<li><span>{{ node.date | date_to_string }}</span> &raquo; <a href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
-			{% endif %}
-		{% endif %}
-      {% endunless %}
-  {% endfor %}
-
-  </ul>
 
   <h2>All Tutorials</h2>
   <ul class="list-posts-home">

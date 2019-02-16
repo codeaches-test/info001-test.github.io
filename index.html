@@ -14,14 +14,7 @@ paypal-donate-button: false
   <h2>Latest Tutorials</h2>
   <ul class="list-posts-home">
   {% assign pages_list = site.html_pages | sort:"date" | reverse %}
-  
-  
-  {% assign today = site.time | date: '%s' %}
-  {% assign start = '20-01-2014 04:00:00' | date: '%s' %}
-  {% assign secondsSince = today | minus: start %}
-  {% assign hoursSince = secondsSince | divided_by: 60 | divided_by: 60     %}
-  {% assign daysSince = hoursSince | divided_by: 24  %}
-  
+
   {% for node in pages_list %}
       {% unless node.nav_exclude %}
         {% if node.has_children == nil and node.title != "Home" %}

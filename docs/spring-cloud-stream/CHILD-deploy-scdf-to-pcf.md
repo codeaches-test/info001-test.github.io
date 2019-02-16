@@ -11,6 +11,7 @@ permalink: /spring-cloud-stream/deploy-scdf-to-pcf
 gh-repo: codeaches/scdf-pcf-stream
 gh-badge: [star, watch, follow]
 
+date: 2019-01-20 1:00:00 -0700
 ---
 
 # Deploy Spring Cloud Data Flow Server (SCDF) to cloudfoundry (PCF)

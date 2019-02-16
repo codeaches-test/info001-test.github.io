@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Spring Security Oauth2 Service
+title: Spring Security Oauth2
 nav_order: 200
 has_children: true
 permalink: /spring-security

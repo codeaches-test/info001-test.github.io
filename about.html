@@ -1,0 +1,63 @@
+---
+layout: default
+title: "Pavan Gurudutt"
+nav_order: 1
+description: "Author of Codeaches, a Java Spring Boot and Spring Cloud Based Tutorials Blog"
+permalink: /about
+
+disqus_enabled: false
+github-codebase-post-link: false
+paypal-donate-button: false
+nav_exclude: true
+search_exclude: true
+---
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css">
+
+<div id="aboutme-section">
+    <h1 align = "center">{{ site.author.name }}</h1>
+
+	<h3 class="no_toc" align = "center">{{ page.description }}</h3>
+
+<hr />
+
+    <p class="about-text">
+        <span class="fa fa-briefcase about-icon"></span> Java Application
+        Programmer.
+    </p>
+    <p class="about-text">
+        <span class="fa fa-graduation-cap about-icon"></span> Obtained my
+        Bachelors in <strong>Electronics and Communications</strong> from <a
+            href="http://vtu.ac.in/en/" target="_blank">VTU</a>
+    </p>
+    <p class="about-text">
+        <span class="fa fa-code about-icon"></span> Lately, I started writing <strong>Java Spring
+        Boot and Spring Cloud based tutorials</strong> to learn and to help others.
+    </p>
+    <p class="about-text">
+        <span class="fa fa-globe about-icon"></span> Grew up in <strong><i>Bangalore,
+        India</i></strong>
+    </p>
+	<br>
+    <p class="about-text">
+        <span class="fa fa-envelope about-icon"></span> <strong><i>Like to contribute? Get in touch with me!</i></strong>
+    </p>
+</div>
+
+<br>
+
+<div id="contact-form">
+    <form action="https://formspree.io/{{ site.formspree_io_id }}" method="POST" >
+        <input type="hidden" name="_subject" value="New submission from codeaches.com">
+
+		<input
+            type="hidden" name="_next"
+            value="./formspreeresponse?message=Your message was sent successfully, thanks!" />
+
+        <input type="email" name="_replyto" id="myemail" placeholder="Your Email" title="Email" required="required">
+        <input type="text" name="name" id="myname" placeholder="Name" title="Name" required="required">	   
+        <textarea type="text" name="content" id="mymessage" placeholder="message" title="Message" required="required" rows="3"></textarea>
+        <input type="text" name="_gotcha" style="display: none">
+        <button type="submit" class="btn btn-lg btn-primary">Send Email</button>
+    </form>
+</div>

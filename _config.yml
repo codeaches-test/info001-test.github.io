@@ -28,6 +28,10 @@ search_enabled: true
 aux_links:
   "Codeaches on GitHub":
     - "//github.com/codeaches"
+  "Linkedin":
+    - "//linkedin.com/in/pavan-gurudutt/"
+  "About Me/Contact Me":
+    - "/about"
 
 # Color scheme currently only supports "dark" or nil (default)
 color_scheme: springtheme
@@ -47,6 +51,17 @@ defaults:
       path: ""
     values:
       disqus_enabled: true
-      addthis-plugin: true
+      addthis-plugin: false
       github-codebase-post-link: true
       paypal-donate-button: true
+
+formspree_io_id: pavan@codeaches.com
+
+author:
+  name: Pavan Gurudutt
+  email: "info@codeaches.com"
+  github: codeaches
+  linkedin: "in/pavan-gurudutt"
+  stackoverflow: "users/10859002/pavan-gurudutt"
+  calendly: "codeaches"
+  twitter: "pavan_apsc"

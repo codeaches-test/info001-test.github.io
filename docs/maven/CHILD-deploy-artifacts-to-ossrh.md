@@ -11,6 +11,8 @@ permalink: /maven/deploy-jar-to-ossrh-central-repository
 
 gh-repo: codeaches/sample-ossrh-deploy-codebase
 gh-badge: [star, watch, follow]
+
+date: 2019-02-10 1:00:00 -0700
 ---
 
 # Deploy artifacts to Open Source Software Repository Hosting Service (OSSRH) with Apache Maven

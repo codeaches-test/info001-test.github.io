@@ -12,6 +12,7 @@ permalink: /spring-cloud-config/deploy-spring-cloud-config-client
 gh-repo: codeaches/config-client-pcf-app
 gh-badge: [star, watch, follow]
 
+date: 2018-11-27 1:00:00 -0700
 ---
 
 # Register Spring Cloud Config Server on cloudfoundry (PCF)

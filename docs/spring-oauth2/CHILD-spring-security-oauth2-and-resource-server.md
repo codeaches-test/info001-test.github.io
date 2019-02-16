@@ -2,17 +2,18 @@
 layout: default
 title: "OAuth2 Spring Security using JdbcTokenStore"
 nav_order: 1
-parent: "Spring Security Oauth2 Service"
+parent: "Spring Security Oauth2"
 references_file: references.md
 permalink: /spring-security/oauth2-and-resource-server
 
 gh-repo: codeaches/oauth2-and-resource-servers
 gh-badge: [star, watch, follow]
+
+date: 2018-12-15 1:00:00 -0700
 ---
 
 # OAuth2 Spring Security using Jdbc Token Store
 {: .no_toc }
-
 ---
 
 The Spring OAuth 2.0 Authorization mechanism manages and verifies the OAuth 2.0 tokens which are used to access the protected resources. The requests for the tokens are handled by Spring MVC controller endpoints.

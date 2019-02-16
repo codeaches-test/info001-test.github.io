@@ -12,20 +12,6 @@ paypal-donate-button: false
 
 <div id="list-posts-home">
 
-  <h2>All Tutorials</h2>
-  <ul class="list-posts-home">
-  {% assign pages_list = site.html_pages | sort:"date" | reverse %}
-  
-  {% for node in pages_list %}
-      {% unless node.nav_exclude %}
-        {% if node.has_children == nil and node.title != "Home" %}
-		    <li><span>{{ node.date | date_to_string }}</span> &raquo; <a href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
-        {% endif %}
-      {% endunless %}
-  {% endfor %}
-
-  </ul>
-
   <h2>Noteworthy Mentions</h2>
   <ul class="posts">
     <li><a href="http://github.com/jekyll/jekyll/">Jekyll:</a> A simple, blog aware, static site generator (used for this site).</li>

@@ -16,7 +16,7 @@ paypal-donate-button: false
   <h2>All Tutorials</h2>
   <ul class="list-posts-home">
 
-  {% assign pages_list = site.html_pages | sort:"date" | reverse %}
+  {% assign pages_list = site.html_pages | sort:"nav_order" %}
   
   {% for node in pages_list %}
       {% unless node.nav_exclude %}

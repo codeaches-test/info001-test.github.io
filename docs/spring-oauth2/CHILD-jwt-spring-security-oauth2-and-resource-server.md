@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "OAuth2 Spring Security using JWT"
+description: "OAuth2 Spring Security using JWT"
+
 nav_order: 2
 parent: "Spring Security Oauth2"
 references_file: references.md
@@ -10,11 +12,6 @@ gh-repo: codeaches/jwt-oauth2-and-resource-servers
 gh-badge: [star, watch, follow]
 
 date: 2018-11-27 1:00:00 -0700
----
-
-# OAuth2 Spring Security using JWT
-{: .no_toc }
-
 ---
 
 The Spring OAuth 2.0 Authorization mechanism manages and verifies the OAuth 2.0 tokens which are used to access the protected resources. The requests for the tokens are handled by Spring MVC controller endpoints.

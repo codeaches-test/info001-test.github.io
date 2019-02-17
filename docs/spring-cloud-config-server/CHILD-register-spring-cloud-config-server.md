@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Register Spring Cloud Config Server on PCF"
+description: "Register Spring Cloud Config Server on cloudfoundry (PCF)"
 
 nav_order: 1
 parent: "Spring Cloud Config Server"
@@ -13,11 +14,6 @@ gh-repo: codeaches/config-client-pcf-app
 gh-badge: [star, watch, follow]
 
 date: 2018-11-28 1:00:00 -0700
----
-
-# Register Spring Cloud Config Server on cloudfoundry (PCF)
-{: .no_toc }
-
 ---
 
 Config Server for Pivotal Cloud Foundry (PCF) is an externalized configuration service, which gives us with a central place to manage an application's external properties across all environments.

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Deploy artifacts to OSSRH"
+description: "Deploy artifacts to Open Source Software Repository Hosting Service (OSSRH) with Apache Maven"
+
 nav_order: 100
 references_file: references.md
 
@@ -14,12 +16,6 @@ gh-badge: [star, watch, follow]
 
 date: 2019-02-10 1:00:00 -0700
 ---
-
-# Deploy artifacts to Open Source Software Repository Hosting Service (OSSRH) with Apache Maven
-{: .no_toc }
-
----
-
 Sonatype OSSRH (Open Source Software Repository Hosting) provides repository hosting service for open source project binaries (jar files etc).
 
 In this tutorial, let's create an account in OSSRH and deploy a jar file to OSSRH using maven using a windows PC.

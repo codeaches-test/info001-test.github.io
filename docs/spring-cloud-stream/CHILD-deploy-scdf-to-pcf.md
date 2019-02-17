@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Deploy SCDF to PCF"
+description: "Deploy Spring Cloud Data Flow Server (SCDF) to cloudfoundry (PCF)"
 
 nav_order: 5
 parent: "Spring Cloud Stream"
@@ -12,11 +13,6 @@ gh-repo: codeaches/scdf-pcf-stream
 gh-badge: [star, watch, follow]
 
 date: 2019-01-20 1:00:00 -0700
----
-
-# Deploy Spring Cloud Data Flow Server (SCDF) to cloudfoundry (PCF)
-{: .no_toc }
-
 ---
 
 Spring Cloud Data Flow (SCDF) is a toolkit for building data integration and real-time data processing pipelines. The SCDF server uses Spring Cloud Deployer, to deploy data pipelines onto modern runtimes such as Cloud Foundry (PCF). 

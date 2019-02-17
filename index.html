@@ -19,7 +19,7 @@ paypal-donate-button: false
 <!--
   {% assign pages_list = site.html_pages | sort:"date" | reverse %}
 -->
-  {% assign pages_list = site.html_pages | sort:"date" %}
+  {% assign pages_list = site.html_pages | sort:"date" | reverse %}
 
   {% for node in pages_list %}
       {% unless node.nav_exclude %}

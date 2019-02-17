@@ -25,7 +25,7 @@ paypal-donate-button: false
 
   {% for node in pages_list %}
       {% unless node.nav_exclude %}
-        {% if node.has_children == nil and node.title != "Home" %}
+        {% if node.has_children == nil and node.title != "Home" and node.date != nil %}
 		    <li><span>{{ node.date | date_to_string }}</span> &raquo; <a href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
         {% endif %}
       {% endunless %}

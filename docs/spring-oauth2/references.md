@@ -18,4 +18,4 @@
 
 [Configuration GIT repository]: https://github.com/codeaches/config-files-example
 
-[Deploy SCDF to PCF]: /spring-cloud-stream/deploy-scdf-to-pcf
+[Deploy SCDF to PCF]: /spring-cloud-deploy-scdf-to-pcf

@@ -51,7 +51,7 @@ curl https://start.spring.io/starter.zip  \
        -d type=maven-project \
        -d groupId=com.codeaches \
        -d artifactId=oauth2server \
-       -d bootVersion=2.2.0.BUILD-SNAPSHOT \
+       -d bootVersion=2.1.3.RELEASE \
        -o oauth2server.zip
 ```
 
@@ -115,8 +115,8 @@ create table oauth_refresh_token (
 **Create a client**
 
 Let's insert a record in `oauth_client_details` table for a client named `appclient` with a password `appclient@123`.  
-> `appclient` has access to the petstore resource with read and write `scope`
->> The password needs to be saved to DB in Bcrypt format. I have used an online tool to Bcrypt the password with 8 rounds 
+> `appclient` has access to the petstore resource with read and write `scope`.  
+> The password needs to be saved to DB in Bcrypt format. I have used an online tool to Bcrypt the password with 8 rounds. 
 
 `src/main/resources/data.sql`
 
@@ -275,10 +275,11 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
 Let's create a class `UserSecurityConfig.java` to handle user authentication.
 
-> `setEnableAuthorities(false)` disables the usage of authorities table and `setEnableGroups(true)` enables the usage of groups, group authorities and group members tables.  
-> `BCryptPasswordEncoder` implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a "strength" (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 4 for `user's password`   
+1. `setEnableAuthorities(false)` disables the usage of authorities table and `setEnableGroups(true)` enables the usage of groups, group authorities and group members tables.  
+2. `BCryptPasswordEncoder` implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a "strength" (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 4 for `user's password`   
 
 `com.codeaches.oauth2server.UserSecurityConfig.java`
+
 ```java
 @Configuration
 public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -316,6 +317,7 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 ```
+
 **Configure oauth2server project to run on port 9050**
 
 `src/main/resources/application.properties`
@@ -342,6 +344,7 @@ Now that we have the `oauth2server` application up and running, let's test the a
 Let's get a token from OAuth2 Server for `kelly` using the URI `/oauth/token` and `grant_type=password`
 
 *Request*
+
 ```sh
 curl -X POST http://localhost:9050/oauth/token \
     --header "Authorization:Basic YXBwY2xpZW50OmFwcGNsaWVudEAxMjM=" \
@@ -349,9 +352,11 @@ curl -X POST http://localhost:9050/oauth/token \
     -d "username=kelly" \
     -d "password=kelly@123"
 ```
+
 > `YXBwY2xpZW50OmFwcGNsaWVudEAxMjM=` is the Base 64 authorization version of client_id and client_secret.  
 
 *Response*
+
 ```json
 {
   "access_token": "13df4f18-7763-4772-9960-895ca905dd56",
@@ -367,12 +372,14 @@ curl -X POST http://localhost:9050/oauth/token \
 Let's validate the above retrieved **access_token** `13df4f18-7763-4772-9960-895ca905dd56` by making a call to OAuth2 Server using the URI `/oauth/check_token`
 
 *Request*
+
 ```sh
 curl -X POST http://localhost:9050/oauth/check_token \
     -d "token=13df4f18-7763-4772-9960-895ca905dd56"
 ```
 
 *Response*
+
 ```json
 {
   "aud": [
@@ -397,6 +404,7 @@ curl -X POST http://localhost:9050/oauth/check_token \
 Let's get a new token from OAuth2 Server by using the earlier obtained **refresh_token** `6d49fd10-b92e-4bb2-b58d-b83212d70bcb` using the URI `/oauth/token` and `grant_type=refresh_token`
 
 *Request*
+
 ```sh
 curl -X POST http://localhost:9050/oauth/token \
     --header "Authorization:Basic YXBwY2xpZW50OmFwcGNsaWVudEAxMjM=" \
@@ -406,6 +414,7 @@ curl -X POST http://localhost:9050/oauth/token \
 > `YXBwY2xpZW50OmFwcGNsaWVudEAxMjM=` is the Base 64 authorization version of client_id and client_secret.  
 
 *Response*
+
 ```json
 {
   "access_token": "807d4eda-ed9e-48d7-bc1a-29e78987376a",
@@ -435,7 +444,7 @@ curl https://start.spring.io/starter.zip  \
        -d type=maven-project \
        -d groupId=com.codeaches \
        -d artifactId=petstore \
-       -d bootVersion=2.2.0.BUILD-SNAPSHOT \
+       -d bootVersion=2.1.3.RELEASE \
        -o petstore.zip
 ```
 
@@ -481,8 +490,8 @@ public class DemoApplication {
 
 Let's create a class `PetstoreController.java` and configure REST methods pet() and favouritePet()
 
-> `/pet` can be acessed by user who belongs to `AUTHORIZED_PETSTORE_USER`  
-> `/favouritePet` can be acessed by user who belongs to `AUTHORIZED_PETSTORE_ADMIN`
+> `/pet` can be acessed by user who belongs to `AUTHORIZED_PETSTORE_USER`.  
+> `/favouritePet` can be acessed by user who belongs to `AUTHORIZED_PETSTORE_ADMIN`.
 
 `com.codeaches.petstore.PetstoreController.java`
 
@@ -539,6 +548,7 @@ DemoApplication  : Started DemoApplication in 12.233 seconds (JVM running for 14
 > Both john and kelly has access to `/pet`
 
 *Request*
+
 ```sh
 curl -X GET http://localhost:8010/pet \
     --header "Authorization:Bearer 807d4eda-ed9e-48d7-bc1a-29e78987376a"
@@ -546,6 +556,7 @@ curl -X GET http://localhost:8010/pet \
 > `807d4eda-ed9e-48d7-bc1a-29e78987376a` is the access_token obtained from OAuth2 Server for the user `kelly`.
 
 *Response*
+
 ```
 Hi kelly. My pet is dog
 ```
@@ -555,6 +566,7 @@ Hi kelly. My pet is dog
 > Only `john` has access to `/favouritePet`
 
 *Request*
+
 ```sh
 curl -X GET http://localhost:8010/favouritePet \
     --header "Authorization:Bearer 6092fa20-f191-4637-aa91-524472a99ac3"
@@ -562,6 +574,7 @@ curl -X GET http://localhost:8010/favouritePet \
 > `6092fa20-f191-4637-aa91-524472a99ac3` is the access_token obtained from OAuth2 Server for the user `john`. 
 
 *Response*
+
 ```
 Hi john. My favourite pet is cat
 ```
@@ -571,12 +584,14 @@ Hi john. My favourite pet is cat
 > kelly does not belong to `AUTHORIZED_PETSTORE_ADMIN` and hence does not have access to `/favouritePet`
 
 *Request*
+
 ```sh
 curl -X GET http://localhost:8010/favouritePet \
     --header "Authorization:Bearer 807d4eda-ed9e-48d7-bc1a-29e78987376a"
 ```
 
 *Response*
+
 ```json
 {
     "error": "access_denied",
@@ -586,4 +601,4 @@ curl -X GET http://localhost:8010/favouritePet \
 
 ## Summary {#summary}
 
-Congratulations! You just created an Spring Boot OAuth2 Authorization and Resource Servers with Jdbc Token Store and BCrypt Password Encoder.
+Congratulations! You just created a Spring Boot OAuth2 Authorization and Resource Servers with Jdbc Token Store and BCrypt Password Encoder.

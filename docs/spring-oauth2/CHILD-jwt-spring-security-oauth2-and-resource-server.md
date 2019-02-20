@@ -41,7 +41,7 @@ Let's utilize [spring initializr web tool](https://start.spring.io/){:target="_b
 
 Click on `Generate Project`. The project will be downloaded as `jwtoauth2server.zip` file on your hard drive.
 
->Alternatively, you can also generate the project in a shell using cURL
+>Alternatively, you can also generate the project in a shell using cURL.
 
 ```sh
 curl https://start.spring.io/starter.zip  \
@@ -51,7 +51,7 @@ curl https://start.spring.io/starter.zip  \
        -d type=maven-project \
        -d groupId=com.codeaches \
        -d artifactId=jwtoauth2server \
-       -d bootVersion=2.2.0.BUILD-SNAPSHOT \
+       -d bootVersion=2.1.3.RELEASE \
        -o jwtoauth2server.zip
 ```
 
@@ -106,8 +106,8 @@ create table oauth_client_details (
 **Create a client**
 
 Let's insert a record in `oauth_client_details` table for a client named `appclient` with a password `appclient@123`.  
-> `appclient` has access to the jwtpetstore resource with read and write `scope`
->> The password needs to be saved to DB in Bcrypt format. I have used an online tool to Bcrypt the password with 8 rounds 
+> `appclient` has access to the jwtpetstore resource with read and write `scope`.  
+> The password needs to be saved to DB in Bcrypt format. I have used an online tool to Bcrypt the password with 8 rounds.
 
 `src/main/resources/data.sql`
 
@@ -208,8 +208,8 @@ Let's create a class `AuthServerConfig.java` and annotate with `@EnableAuthoriza
 1. `JwtAccessTokenConverter` is a helper class that translates between JWT encoded token values and OAuth authentication information (in both directions). It also acts as a TokenEnhancer when tokens are granted.   
 2. `BCryptPasswordEncoder` implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a "strength" (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 8 for `client secret`.    
 3. `AuthorizationServerEndpointsConfigurer` configures the non-security features of the Authorization Server endpoints, like token store, token customizations, user approvals and grant types.    
-5. `AuthorizationServerSecurityConfigurer` configures the security of the Authorization Server, which means in practical terms the /oauth/token endpoint.    
-6. `ClientDetailsServiceConfigurer` configures the ClientDetailsService, e.g. declaring individual clients and their properties.
+4. `AuthorizationServerSecurityConfigurer` configures the security of the Authorization Server, which means in practical terms the /oauth/token endpoint.    
+5. `ClientDetailsServiceConfigurer` configures the ClientDetailsService, e.g. declaring individual clients and their properties.
 
 `com.codeaches.jwtoauth2server.AuthServerConfig.java`
 
@@ -272,9 +272,10 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 Let's create a class `UserSecurityConfig.java` to handle user authentication.
 
 > `setEnableAuthorities(false)` disables the usage of authorities table and `setEnableGroups(true)` enables the usage of groups, group authorities and group members tables.  
-> `BCryptPasswordEncoder` implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a "strength" (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 4 for `user's password`   
+> `BCryptPasswordEncoder` implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a "strength" (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 4 for `user's password`.
 
 `com.codeaches.jwtoauth2server.UserSecurityConfig.java`
+
 ```java
 @Configuration
 public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -335,9 +336,10 @@ Now that we have the `jwtoauth2server` application up and running, let's test th
 
 **Get a token**
 
-Let's get a token from OAuth2 Server for `kelly` using the URI `/oauth/token` and `grant_type=password`
+Let's get a token from OAuth2 Server for `kelly` using the URI `/oauth/token` and `grant_type=password`.
 
 *Request*
+
 ```sh
 curl -X POST http://localhost:9051/oauth/token \
     --header "Authorization:Basic YXBwY2xpZW50OmFwcGNsaWVudEAxMjM=" \
@@ -350,9 +352,9 @@ curl -X POST http://localhost:9051/oauth/token \
 *Response*
 ```json
 {  
-   "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTQ2MDAyNzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.5F-tS2vPWfejwwcEWxhA2MprQuu3H-A_56gcj6NS_iw",
+   "access_token":"<auth2_server_generated_access_token>",
    "token_type":"bearer",
-   "refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiYXRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiZXhwIjoxNTQ2NDc3NzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiMDdhMmZkYjgtZTc4My00NzQwLWEwY2MtOTNmYTFkYTgxNmMzIiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.KCzK75yBi34wy2bPQAuYmzEuECJFRRp9mnULh_59GpU",
+   "refresh_token":"<auth2_server_generated_refresh_token>",
    "expires_in":24999,
    "scope":"read write",
    "jti":"df76986d-651b-43c2-9392-0a5c22f93c38"
@@ -361,12 +363,12 @@ curl -X POST http://localhost:9051/oauth/token \
 
 **Validate the access_token**
 
-Let's validate the above retrieved **access_token** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTQ2MDAyNzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.5F-tS2vPWfejwwcEWxhA2MprQuu3H-A_56gcj6NS_iw` by making a call to OAuth2 Server using the URI `/oauth/check_token`
+Let's validate the above retrieved **access_token** `<auth2_server_generated_access_token>` by making a call to OAuth2 Server using the URI `/oauth/check_token`
 
 *Request*
 ```sh
 curl -X POST http://localhost:9051/oauth/check_token \
-    -d "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTQ2MDAyNzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.5F-tS2vPWfejwwcEWxhA2MprQuu3H-A_56gcj6NS_iw"
+    -d "token=<auth2_server_generated_access_token>"
 ```
 
 *Response*
@@ -392,23 +394,23 @@ curl -X POST http://localhost:9051/oauth/check_token \
 
 **Get a new token by using earlier obtained refresh token**
 
-Let's get a new token from OAuth2 Server by using the earlier obtained **refresh_token** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiYXRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiZXhwIjoxNTQ2NDc3NzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiMDdhMmZkYjgtZTc4My00NzQwLWEwY2MtOTNmYTFkYTgxNmMzIiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.KCzK75yBi34wy2bPQAuYmzEuECJFRRp9mnULh_59GpU` using the URI `/oauth/token` and `grant_type=refresh_token`
+Let's get a new token from OAuth2 Server by using the earlier obtained **refresh_token** `<auth2_server_generated_refresh_token>` using the URI `/oauth/token` and `grant_type=refresh_token`
 
 *Request*
 ```sh
 curl -X POST http://localhost:9051/oauth/token \
     --header "Authorization:Basic YXBwY2xpZW50OmFwcGNsaWVudEAxMjM=" \
     -d "grant_type=refresh_token" \
-    -d "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiYXRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiZXhwIjoxNTQ2NDc3NzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiMDdhMmZkYjgtZTc4My00NzQwLWEwY2MtOTNmYTFkYTgxNmMzIiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.KCzK75yBi34wy2bPQAuYmzEuECJFRRp9mnULh_59GpU"
+    -d "refresh_token=<auth2_server_generated_refresh_token>"
 ```
 > `YXBwY2xpZW50OmFwcGNsaWVudEAxMjM=` is the Base 64 authorization version of client_id and client_secret.  
 
 *Response*
 ```json
 {  
-   "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTQ2MDAzMDg1LCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiOGE3NTE2Y2ItNGFmMy00YTRkLWFiMWYtMTA1ZThkNmFkMWRhIiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.S90V46jEHyE8czzsP0WCRu3lnPH0fz5ooZRf6YXZ670",
+   "access_token":"<auth2_server_generated_new_access_token>",
    "token_type":"bearer",
-   "refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiYXRpIjoiOGE3NTE2Y2ItNGFmMy00YTRkLWFiMWYtMTA1ZThkNmFkMWRhIiwiZXhwIjoxNTQ2NDc3NzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiMDdhMmZkYjgtZTc4My00NzQwLWEwY2MtOTNmYTFkYTgxNmMzIiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.hrvyQglaeL1PBHCuZUOtJrIQQzVr9l8JeaR3y0w25pU",
+   "refresh_token":"<auth2_server_generated_kellys_new_refresh_token>",
    "expires_in":24999,
    "scope":"read write",
    "jti":"8a7516cb-4af3-4a4d-ab1f-105e8d6ad1da"
@@ -434,7 +436,7 @@ curl https://start.spring.io/starter.zip  \
        -d type=maven-project \
        -d groupId=com.codeaches \
        -d artifactId=jwtpetstore \
-       -d bootVersion=2.2.0.BUILD-SNAPSHOT \
+       -d bootVersion=2.1.3.RELEASE \
        -o jwtpetstore.zip
 ```
 
@@ -461,7 +463,7 @@ server.port=8011
 
 **Enable Resource Server Mechanism on jwtpetstore application**
 
-Let's annotate DemoApplication.java with `@EnableResourceServer`. This annotation is used by spring internally to configure the Resource Server mechanism
+Let's annotate DemoApplication.java with `@EnableResourceServer`. This annotation is used by spring internally to configure the Resource Server mechanism.
 
 `com.codeaches.jwtpetstore.DemoApplication.java`
 
@@ -520,8 +522,8 @@ security.oauth2.resource.id=petstore
 
 security.oauth2.resource.jwt.key-value=JWTKey@123
 ```
-> Note that the value of `security.oauth2.resource.jwt.key-value` should match the Signing Key provided in the OAuth2 Server. Please refer to `AuthServerConfig.java` in OAuth2 server.
->> Instead of `security.oauth2.resource.jwt.key-value`, we can also configure `security.oauth2.resource.jwt.key-uri` with `http://localhost:9051/oauth/token_key` for token validation.
+> Note that the value of `security.oauth2.resource.jwt.key-value` should match the Signing Key provided in the OAuth2 Server. Please refer to `AuthServerConfig.java` in OAuth2 server.  
+> Instead of `security.oauth2.resource.jwt.key-value`, we can also configure `security.oauth2.resource.jwt.key-uri` with `http://localhost:9051/oauth/token_key` for token validation.
 
 **Start the jwtpetstore Resource Server**
 
@@ -541,9 +543,9 @@ DemoApplication  : Started DemoApplication in 12.233 seconds (JVM running for 14
 *Request*
 ```sh
 curl -X GET http://localhost:8011/pet \
-    --header "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTQ2MDAyNzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.5F-tS2vPWfejwwcEWxhA2MprQuu3H-A_56gcj6NS_iw"
+    --header "Authorization:Bearer <auth2_server_generated_access_token>"
 ```
-> `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTQ2MDAyNzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.5F-tS2vPWfejwwcEWxhA2MprQuu3H-A_56gcj6NS_iw` is the access_token obtained from OAuth2 Server for the user `kelly`.
+> `<auth2_server_generated_access_token>` is the access_token obtained from OAuth2 Server for the user `kelly`.
 
 *Response*
 ```
@@ -557,11 +559,12 @@ Hi kelly. My pet is dog
 *Request*
 ```sh
 curl -X GET http://localhost:8011/favouritePet \
-    --header "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiand0cGV0c3RvcmUiXSwidXNlcl9uYW1lIjoiam9obiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1NDYwMDU0NTksImF1dGhvcml0aWVzIjpbIkFVVEhPUklaRURfUEVUU1RPUkVfQURNSU4iLCJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiN2U0MTZkNzktNjk2NC00MWY2LThmZmEtZTMyMDUxY2UyZGJmIiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.SMccds-h9pbCoyzith1JDJnLjf15mr9AvqKQzzO31S0"
+    --header "Authorization:Bearer <auth2_server_generated_johns_access_token>"
 ```
-> `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiand0cGV0c3RvcmUiXSwidXNlcl9uYW1lIjoiam9obiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1NDYwMDU0NTksImF1dGhvcml0aWVzIjpbIkFVVEhPUklaRURfUEVUU1RPUkVfQURNSU4iLCJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiN2U0MTZkNzktNjk2NC00MWY2LThmZmEtZTMyMDUxY2UyZGJmIiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.SMccds-h9pbCoyzith1JDJnLjf15mr9AvqKQzzO31S0` is the access_token obtained from OAuth2 Server for the user `john`. 
+> `<auth2_server_generated_johns_access_token>` is the access_token obtained from OAuth2 Server for the user `john`. 
 
 *Response*
+
 ```
 Hi john. My favourite pet is cat
 ```
@@ -571,12 +574,14 @@ Hi john. My favourite pet is cat
 > kelly does not belong to `AUTHORIZED_PETSTORE_ADMIN` and hence does not have access to `/favouritePet`
 
 *Request*
+
 ```sh
 curl -X GET http://localhost:8011/favouritePet \
-    --header "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicGV0c3RvcmUiXSwidXNlcl9uYW1lIjoia2VsbHkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTQ2MDAyNzEzLCJhdXRob3JpdGllcyI6WyJBVVRIT1JJWkVEX1BFVFNUT1JFX1VTRVIiXSwianRpIjoiZGY3Njk4NmQtNjUxYi00M2MyLTkzOTItMGE1YzIyZjkzYzM4IiwiY2xpZW50X2lkIjoiYXBwY2xpZW50In0.5F-tS2vPWfejwwcEWxhA2MprQuu3H-A_56gcj6NS_iw"
+    --header "Authorization:Bearer <auth2_server_generated_access_token>"
 ```
 
 *Response*
+
 ```json
 {
     "error": "access_denied",
@@ -586,4 +591,4 @@ curl -X GET http://localhost:8011/favouritePet \
 
 ## Summary {#summary}
 
-Congratulations! You just created an Spring Boot OAuth2 Authorization and Resource Servers with JWT token.
+Congratulations! You just created a Spring Boot OAuth2 Authorization and Resource Servers with JWT token.

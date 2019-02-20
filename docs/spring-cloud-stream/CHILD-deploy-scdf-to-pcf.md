@@ -27,7 +27,7 @@ In this tutorial, let's download and deploy Spring Cloud Data Flow Server (SCDF)
 
 ## Prerequisites {#prerequisites}
 
- - An account on Pivotal Cloud Foundry (PCF). You can create one [here](https://console.run.pivotal.io/){:target="_blank"}
+An account on Pivotal Cloud Foundry (PCF). You can create one [here](https://console.run.pivotal.io/){:target="_blank"}
 
 ## Add Services from PCF Marketplace {#add_services_marketplace}
 

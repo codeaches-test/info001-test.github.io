@@ -8,6 +8,7 @@ layout: null
 
 	{% for node in pages_list %}
 	{% unless node.nav_exclude %}
+	{% unless node.url contains "{{ site.url }}{{ site.baseurl }}/docs" %}
 	  
 		{% if node.parent == nil %}
 			{% if page.parent == node.title or page.grand_parent == node.title %}
@@ -56,6 +57,7 @@ layout: null
 				{% endfor %}
 			{% endif %}
 		{% endif %}
+	{% endunless %}
 	{% endunless %}
 	{% endfor %}
 	

@@ -3,7 +3,7 @@ layout: default
 title: "Create A Stream using SCDF and Java DSL"
 description: "Create and deploy a Stream using Spring Cloud Data Flow Server (SCDF) and Java DSL"
 
-nav_order: 7
+nav_order: 3
 parent: "Spring Cloud Stream"
 
 references_file: references.md
@@ -16,9 +16,9 @@ gh-badge: [star, watch, follow]
 date: 2019-02-20 1:00:00 -0700
 ---
 
-In this tutorial, let's use the Java-based DSL provided by the spring-cloud-dataflow-rest-client module to deploy a stream to PCF. The Java DSL is a convenient wrapper around the DataFlowTemplate class that enables creating and deploying streams programmatically.
+In this tutorial, let's use the Java-based DSL provided by the `spring-cloud-dataflow-rest-client` module to deploy a stream to PCF. 
 
-We need Spring Cloud Data Flow Server (SCDF) for creating and deploying the stream to cloudfoundry, the tutorial of which can be found at [Deploy SCDF to PCF]{:target="_blank"}.
+***The Java DSL is a convenient wrapper around the DataFlowTemplate class that enables creating and deploying streams programmatically***
 
 ## Table of contents
 {: .no_toc }
@@ -28,97 +28,105 @@ We need Spring Cloud Data Flow Server (SCDF) for creating and deploying the stre
 
 ---
 
-## Prerequisites {#prerequisites}
+## Prerequisites
 
- - An account on Pivotal Cloud Foundry (PCF). You can create one [here](https://console.run.pivotal.io/){:target="_blank"}
- - PCF Command Line Interface (CLI) installed on your computer. PCF CLI can be found in `tools` section of your [PCF account](https://console.run.pivotal.io/tools){:target="_blank"}
+ - [Open Source JDK 11]{:target="_blank"}
+ - An account on Pivotal Cloud Foundry (PCF). You can create one [here](https://console.run.pivotal.io/){:target="_blank"}.
  - A running SCDF server on PCF. Follow the steps found at [Deploy SCDF to PCF]{:target="_blank"}.
 
-## Log into your PCF account using `cf` command {#add_services_marketplace}
+## Build Stream deployer Java application
 
-Replace `<email>`, `<password>`, `<org>` and `<space>` with values specific to your cloudfoundry account.
+**Create a Spring Boot starter project using Spring Initializr**
 
-```sh
-$ cf login -a api.run.pivotal.io -u "<email>" -p "<password>"  -o "<org>" -s "<space>"
+Let's utilize [spring initializr web tool](https://start.spring.io/){:target="_blank"} and create a skeleton spring boot project for Stream deployer application. I have updated Group field to **com.codeaches**, Artifact to **dslStreamDeployer** and selected `Cloud Stream` dependencies. I have selected Java Version as **11**
 
-API endpoint: api.run.pivotal.io
-Authenticating...
-OK
-Targeted org <org>
-Targeted space <space>
+Click on `Generate Project`. The project will be downloaded as `dsl-stream-deployer.zip` file on your hard drive.
 
-API endpoint:   https://api.run.pivotal.io (API version: 2.128.0)
-User:           <email>
-Org:            <org>
-Space:          <space>
-```
-
-## Create a `http|log` Stream {#create_htp_log_stream}
-
-Cloudfoundry provides with few out-of-the-box source and sink spring boot applications which can be used for stream creation. Lets register the out-of-the-box `http` and `log` spring boot apps, specific to `rabbit` messaging broker, in SCDF server.
+>Alternatively, you can also generate the project in a shell using cURL.
 
 ```sh
-dataflow:>app register --name http --type source --uri maven://org.springframework.cloud.stream.app:http-source-rabbit:2.1.0.RELEASE
-Successfully registered application 'source:http'
-
-dataflow:>app register --name log --type sink --uri maven://org.springframework.cloud.stream.app:log-sink-rabbit:2.1.0.RELEASE
-Successfully registered application 'sink:log'
+curl https://start.spring.io/starter.zip  \
+       -d dependencies=cloud-stream \
+       -d language=java \
+       -d javaVersion=11 \
+       -d type=maven-project \
+       -d groupId=com.codeaches \
+       -d artifactId=dslStreamDeployer \
+       -d bootVersion=2.1.3.RELEASE \
+       -o dsl-stream-deployer.zip
 ```
 
-Let's utilize the above registered apps `http` and `log` to create ``http|log`` stream. This stream, `httpLogStream`, will take HTTP POST request and prints the body in log file.
+**Import and build**
 
-```sh
-dataflow:>stream create --name httpLogStream --definition "http | log" --deploy
-Created new stream 'httpLogStream'
-Deployment request has been sent
+Import the project in STS as `Existing Maven project` and do Maven build.
+
+> Add the jaxb-runtime dependancy if the build fails with an error "javax.xml.bind.JAXBException: Implementation of JAXB-API has not been found on module path or classpath"
+
+```xml
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+</dependency>
 ```
 
->Once the stream creation and deployment is successful, PCF creates random routes (urls) for both log and sink applications which can be validated using `cf apps` command.
+**Add ``spring-cloud-dataflow-rest-client`` dependency**
 
-```sh
-$ cf apps
-Getting apps in org org <org> / space <space> as <email>
-OK
-
-name                                          requested state   instances   memory   disk   urls
-data-flow-server-hd6lIb0-httpLogStream-http   started           1/1         1G       1G     data-flow-server-hd6lIb0-httpLogStream-http.cfapps.io
-data-flow-server-hd6lIb0-httpLogStream-log    started           1/1         1G       1G     data-flow-server-hd6lIb0-httpLogStream-log.cfapps.io
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-dataflow-rest-client</artifactId>
+    <version>1.7.4.RELEASE</version>
+</dependency>
 ```
 
-## Test the Stream {#test_stream}
+Add SCDF server URL and login credentials to `application.properties` file.
 
-**Tail the log of ``log`` application**
-
-Tail the log of ``data-flow-server-hd6lIb0-httpLogStream-log`` application using `cf` command.
-
-```sh
-cf logs data-flow-server-hd6lIb0-httpLogStream-log
-Retrieving logs for app data-flow-server-hd6lIb0-httpLogStream-log in org <org> / space <space> as <email>...
+```java
+spring.cloud.dataflow.client.server-uri=https://codeaches-scdf-server.cfapps.io
+spring.cloud.dataflow.client.authentication.basic.username=user001
+spring.cloud.dataflow.client.authentication.basic.password=pass001
 ```
 
-**Post a sample message to the stream**
+Add SCDF server URL and login credentials to `application.properties` file.
 
-Post a sample `hello world` message to `http` application using the route `data-flow-server-hd6lIb0-httpLogStream-http.cfapps.io` as shown below. The message will be picked up by `http` app and passed to `log` application.
+```java
+@Autowired
+DataFlowOperations dataFlowOperations;
 
-```sh
-$ curl -i -H "Content-Type:application/text" -X POST -d 'hello world' https://data-flow-server-hd6lIb0-httpLogStream-http.cfapps.io
+void registerHttpSource() {
 
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100    15    0     0  100    15      0     21 --:--:-- --:--:-- --:--:--    21HTTP/1.1 202 Accepted
-X-Vcap-Request-Id: f0282b62-c09f-4c23-4e90-0f374ba2cca9
-Content-Length: 0
-Connection: keep-alive
+    dataFlowOperations.appRegistryOperations().register("myHttpSource", ApplicationType.source,
+            "maven://org.springframework.cloud.stream.app:http-source-rabbit:2.1.0.RELEASE", null, true);
+}
+
+void registerLogSink() {
+
+    dataFlowOperations.appRegistryOperations().register("myLogSink", ApplicationType.sink,
+            "maven://org.springframework.cloud.stream.app:log-sink-rabbit:2.1.0.RELEASE", null, true);
+}
+
+void createAndDeployStream() {
+
+    Stream.builder(dataFlowOperations).name("myStreamApp")
+            .definition("myHttpSource | myLogSink").create().deploy();
+}
 ```
 
-Once the message is posted successfully, `hello world` will be printed in the logs of `log` application.
+Let's create a stream by triggering the above created methods.
 
-```sh
-2019-02-18T06:39:43.77-0700 [APP/PROC/WEB/0] OUT 2019-01-16 13:39:43.758  INFO 14 --- [httpLogStream-1] ta-flow-server-hd6lIb0-httpLogStream-log : hello world
+```java
+@Bean
+CommandLineRunner runner() {
+    return args -> {
+        registerHttpSource();
+        registerLogSink();
+        createAndDeployStream();
+    };
+}
 ```
 
-## Summary {#summary}
+## Summary
 
-Congratulations! You just deployed a stream on PCF using SCDF Server and created a `http|log` stream.
+Congratulations! You just deployed a stream on Cloudfoundry(PCF) using JAVA DSL.
 
 {% include_relative {{ page.references_file }} %}

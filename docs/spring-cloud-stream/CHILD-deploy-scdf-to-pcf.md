@@ -3,7 +3,7 @@ layout: default
 title: "Deploy SCDF to PCF"
 description: "Deploy Spring Cloud Data Flow Server (SCDF) to cloudfoundry (PCF)"
 
-nav_order: 5
+nav_order: 1
 parent: "Spring Cloud Stream"
 
 references_file: references.md
@@ -27,11 +27,11 @@ In this tutorial, let's download and deploy Spring Cloud Data Flow Server (SCDF)
 
 ## Prerequisites {#prerequisites}
 
-An account on Pivotal Cloud Foundry (PCF). You can create one [here](https://console.run.pivotal.io/){:target="_blank"}
+ - An account on Pivotal Cloud Foundry (PCF). You can create one [here](https://console.run.pivotal.io/){:target="_blank"}
 
 ## Add Services from PCF Marketplace {#add_services_marketplace}
 
-SCDF Server needs redis, rabbitmq and mysql services. Let's create them before we install SCDF Server.
+SCDF Server needs redis, rabbitmq and mysql services. Let's create them before we dewnload and deploy the SCDF Server.
 
 **Log into your PCF account using `cf` command**
 
@@ -74,7 +74,7 @@ Creating service instance my_mysql in org <org> / space <space> as <email>...
 OK
 ```
 
-**Validate that all the 3 services are created successfully**
+**Validate that all the 3 services are created successfully using ``cf services`` command**
 
 ```sh
 $ cf services
@@ -98,7 +98,9 @@ $ wget http://repo.spring.io/release/org/springframework/cloud/spring-cloud-data
 
 **Create manifest.mf file**
 
-Let's spefify configuration details like credentials, maven coordinates to the Cloud Foundry instance so that the SCDF Server can itself spawn applications. Let's specify these configuration details in `manifest.yml` file.
+Cloudfoundry expects configuration details like credentials, maven coordinates as part of SCDF jar file deployment. So, let's create `manifest.yml` file and specify these configuration details.
+
+> You need to replace `{org}`, `{space}`, `{email}` and `{password}` with values specific to your cloudfoundry account. You will also need to replace the value for `route` with the name of your choice. However, make sure that the route ends with `.cfapps.io`.  
 
 ```yml
 ---
@@ -133,9 +135,7 @@ applications:
     - my_redis
 ```
 
-You need to replace `{org}`, `{space}`, `{email}` and `{password}` with values specific to your cloudfoundry account. You will also need to replace the value for `route` with the name of your choice. However, make sure that the route ends with `.cfapps.io`.  
-
-> Note that the `basic security` is enabled for SCDF server using `user001` and `pass001` as the credentials. These credentials must be provided when logging into SCDF server.
+> The `basic security` is enabled for SCDF server using `user001` and `pass001` as the credentials. These credentials must be provided when logging into SCDF server.
 
 **Deploy SCDF server jar file to cloudfoundry**
 
@@ -147,7 +147,7 @@ $ cf push -f manifest.yml
 
 **Validate the SCDF server deployment**
 
-Verify the SCDF Server deployment status on cloudfoundry.
+Verify the SCDF Server deployment status on cloudfoundry using `cf apps` command.
 
 ```sh
 $ cf apps
@@ -160,4 +160,4 @@ data-flow-server   started           1/1         2G       2G     codeaches-scdf-
 
 ## Summary {#summary}
 
-Congratulations! You just deployed SCDF Server to pivotal cloud foundry.
+Congratulations! You just downloaded and deployed the SCDF Server to pivotal cloudfoundry(PCF).

@@ -27,9 +27,9 @@ search_enabled: true
 # Aux links for the upper right navigation
 aux_links:
   "Codeaches on GitHub":
-    - "//github.com/codeaches"
+    - "https://github.com/codeaches"
   "Linkedin":
-    - "//linkedin.com/in/pavan-gurudutt/"
+    - "https://www.linkedin.com/in/pavan-gurudutt/"
   "About Me/Contact Me":
     - "/about"
 

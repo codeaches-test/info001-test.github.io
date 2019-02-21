@@ -152,13 +152,16 @@ Connection: keep-alive
 ```
 Once the message is posted successfully, `hello world` will be printed in the logs of `log` application.
 
-**Tail the log of ``log`` application**
+**Tail the log of ``log`` application using ``cf logs `` command**
 
 Tail the log of ``data-flow-server-hd6lIb0-httpLogStream-log`` application using `cf logs` command.
 
 ```sh
-cf logs data-flow-server-hd6lIb0-httpLogStream-log
+cf logs --recent data-flow-server-hd6lIb0-httpLogStream-log
 
+Retrieving logs for app data-flow-server-hd6lIb0-httpLogStream-log in org <org> / space <space> as <email>...
+...
+...
 2019-02-18T06:39:43.77-0700 [APP/PROC/WEB/0] OUT 2019-02-18 13:39:43.758  INFO 14 --- [httpLogStream-1] data-flow-server-hd6lIb0-httpLogStream-log : hello world
 ```
 

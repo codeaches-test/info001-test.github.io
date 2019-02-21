@@ -58,4 +58,19 @@ layout: null
 		{% endif %}
 	{% endunless %}
 	{% endfor %}
+	
+	{% if site.aux_links != nil %}
+		{% for link in site.aux_links %}
+			<url>
+			{% if link.last contains "/about" %}
+				<loc>{{ site.url }}{{ site.baseurl }}{{ link.last }}</loc>
+			{% else %}
+				<loc>{{ link.last }}</loc>
+			{% endif %}
+				<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+				<priority>1.0</priority>
+				<changefreq>daily</changefreq>
+			</url>
+		{% endfor %}
+	{% endif %}
 </urlset>

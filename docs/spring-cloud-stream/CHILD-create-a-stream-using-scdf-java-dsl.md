@@ -10,7 +10,7 @@ references_file: references.md
 
 permalink: /spring-cloud-stream/create-stream-using-scdf-java-dsl
 
-gh-repo: codeaches/scdf-pcf-stream-java-dsl
+gh-repo: codeaches/dsl-stream-deployer
 gh-badge: [star, watch, follow]
 
 date: 2019-02-20 1:00:00 -0700

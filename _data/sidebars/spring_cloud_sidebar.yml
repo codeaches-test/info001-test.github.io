@@ -24,9 +24,9 @@ entries:
     output: web, pdf
     folderitems:
     - title: Spring Cloud home
-      url: /spring-cloud
+      url: /spring-cloud/
       output: web
 
     - title: Stream creation using SCDF and Java DSL
-      url: /spring-cloud/create-stream-using-scdf-java-dsl
+      url: /spring-cloud/create-stream-using-scdf-java-dsl/
       output: web, pdf

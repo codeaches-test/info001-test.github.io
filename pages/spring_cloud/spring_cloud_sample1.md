@@ -3,7 +3,7 @@ title: "Stream creation using SCDF and Java DSL"
 keywords: sample
 summary: "Create and deploy a Stream using Spring Cloud Data Flow Server (SCDF) and Java DSL"
 sidebar: spring_cloud_sidebar
-permalink: spring-cloud/create-stream-using-scdf-java-dsl
+permalink: spring-cloud/create-stream-using-scdf-java-dsl/
 folder: spring_cloud
 tags: [spring_cloud]
 ---

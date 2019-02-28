@@ -33,11 +33,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Spring Cloud home
+      url: /spring-cloud/
+      output: web, pdf
+
     - title: My Docs
       url: /mydoc_introduction.html
       output: web, pdf
-
-    - title: Spring Cloud home
-      url: /spring_cloud_landing_page.html
-      output: web, pdf
-

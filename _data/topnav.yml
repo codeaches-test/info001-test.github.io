@@ -23,6 +23,6 @@ topnav_dropdowns:
         - title: Product 2
           url: /p2_landing_page.html
         - title: Spring Cloud
-          url: /spring-cloud
+          url: /spring-cloud/
         - title: Take Me Home
           url: /index.html

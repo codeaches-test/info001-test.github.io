@@ -1,78 +1,24 @@
 ---
-layout: null
+layout: none
+search: exclude
 ---
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for post in site.posts %}
+  {% unless post.search == "exclude" %}
+  <url>
+    <loc>{{site.url}}{{post.url}}</loc>
+  </url>
+  {% endunless %}
+  {% endfor %}
 
-	{% assign pages_list = site.html_pages | sort:"nav_order" %}
 
-	{% for node in pages_list %}
-	{% unless node.nav_exclude %}
-	{% unless node.url contains "docs" %}
-	  
-		{% if node.parent == nil %}
-			{% if page.parent == node.title or page.grand_parent == node.title %}
-				{% assign first_level_url = node.url | absolute_url %}
-			{% endif %}
-
-			<url>
-				<loc>{{ node.url | absolute_url }}</loc>
-				<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-				<priority>1.0</priority>
-				<changefreq>daily</changefreq>
-			</url>
-			{% if node.has_children %}
-				{% assign children_list = site.html_pages | sort:"nav_order" %} 
-				
-				{% for child in children_list %}
-				
-					{% if child.parent == node.title %}
-						{% if page.url == child.url or page.parent == child.title %}
-							{% assign second_level_url = child.url | absolute_url %}
-						{% endif %}
-						
-						<url>
-							<loc>{{ child.url | absolute_url }}</loc>
-							<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-							<priority>1.0</priority>
-							<changefreq>daily</changefreq>
-						</url>
-
-						{% if child.has_children %}
-							{% assign grand_children_list = site.html_pages | sort:"nav_order" %}
-							{% for grand_child in grand_children_list %}
-								{% if grand_child.parent == child.title %}
-									
-									<url>
-										<loc>{{ grand_child.url | absolute_url }}</loc>
-										<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-										<priority>1.0</priority>
-										<changefreq>daily</changefreq>
-									</url>
-
-								{% endif %}
-							{% endfor %}
-						{% endif %}
-					{% endif %}
-				{% endfor %}
-			{% endif %}
-		{% endif %}
-	{% endunless %}
-	{% endunless %}
-	{% endfor %}
-	
-	{% if site.aux_links != nil %}
-		{% for link in site.aux_links %}
-			<url>
-			{% if link.last contains "/about" %}
-				<loc>{{ site.url }}{{ site.baseurl }}{{ link.last }}</loc>
-			{% else %}
-				<loc>{{ link.last }}</loc>
-			{% endif %}
-				<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-				<priority>1.0</priority>
-				<changefreq>daily</changefreq>
-			</url>
-		{% endfor %}
-	{% endif %}
+  {% for page in site.pages %}
+  {% unless page.search == "exclude" %}
+  <url>
+    <loc>{{site.url}}{{ page.url}}</loc>
+  </url>
+  {% endunless %}
+  {% endfor %}
 </urlset>

@@ -1,8 +1,0 @@
-#!/bin/sh
-
-echo "Packaging gem... \n"
-gem build codeaches.gemspec
-
-echo "Cleaning up... \n"
-git add *.gem
-git commit -m 'Bump codeaches gem package'

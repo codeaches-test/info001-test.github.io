@@ -1,0 +1,32 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+
+entries:
+- title: Sidebar
+  product: Spring Cloud Product
+  version: 11.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Spring Cloud Getting Started
+    output: web, pdf
+    folderitems:
+    - title: Spring Cloud home
+      url: /spring-cloud
+      output: web
+
+    - title: Stream creation using SCDF and Java DSL
+      url: /spring-cloud/create-stream-using-scdf-java-dsl
+      output: web, pdf

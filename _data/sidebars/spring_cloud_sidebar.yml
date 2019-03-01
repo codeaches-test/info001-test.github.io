@@ -27,6 +27,10 @@ entries:
       url: /spring-cloud/
       output: web
 
+    - title: Spring Cloud Quick Links
+      url: /spring-cloud-tag/
+      output: web, pdf
+
   - title: Spring Cloud Stream
     output: web, pdf
     folderitems:
@@ -54,12 +58,3 @@ entries:
     - title: Deploy Spring Cloud Config Client
       url: /spring-cloud-config/create-stream-using-scdf-java-dsl/
       output: web, pdf
-
-  - title: Quick Links
-    output: web, pdf
-    folderitems:
-  
-    - title: Spring Cloud Tags
-      url: /spring-cloud-tag/
-      output: web, pdf
-

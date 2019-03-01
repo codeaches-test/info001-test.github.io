@@ -28,14 +28,10 @@ entries:
       url: /spring-batch/
       output: web
 
-    - title: Create a Spring Batch Service
-      url: /spring-batch/create-spring-batch-service/
+    - title: Spring Batch Quick Links
+      url: /spring-batch-tag/
       output: web, pdf
 
-  - title: Quick Links
-    output: web, pdf
-    folderitems:
-  
-    - title: Spring Batch Tags
-      url: /spring-batch-tag/
+    - title: Create a Spring Batch Service
+      url: /spring-batch/create-spring-batch-service/
       output: web, pdf

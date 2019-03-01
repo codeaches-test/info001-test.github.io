@@ -28,6 +28,10 @@ entries:
       url: /spring-security/
       output: web
 
+    - title: Spring Security Quick Links
+      url: /spring-security-tag/
+      output: web, pdf
+
   - title: Spring Security OAuth2
     output: web, pdf
     folderitems:
@@ -38,12 +42,4 @@ entries:
 
     - title: Spring Security using JWT
       url: /spring-security/jwt-oauth2-and-resource-server/
-      output: web, pdf
-
-  - title: Quick Links
-    output: web, pdf
-    folderitems:
-  
-    - title: Spring Security Tags
-      url: /spring-security-tag/
       output: web, pdf

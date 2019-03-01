@@ -48,6 +48,10 @@ entries:
       url: /spring-security/
       output: web, pdf
 
+    - title: Spring Batch
+      url: /spring-batch/
+      output: web, pdf
+
   - title: All Tags
     output: web, pdf
     folderitems:

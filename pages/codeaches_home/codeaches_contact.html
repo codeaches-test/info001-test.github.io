@@ -1,0 +1,26 @@
+---
+layout: default
+title: Contact Me
+keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
+last_updated: July 3, 2016
+tags: [getting_started]
+sidebar: codeaches_home_sidebar
+permalink: contact/
+folder: codeaches_home
+---
+
+<div id="contact-form">
+    <form action="https://formspree.io/{{ site.formspree_io_id }}" method="POST" >
+        <input type="hidden" name="_subject" value="New submission from codeaches.com">
+		<input
+            type="hidden" name="_next"
+            value="./formspreeresponse?message=Your message was sent successfully, thanks!" />
+
+        <input type="email" name="_replyto" id="myemail" placeholder="Your Email" title="Email" required="required"></br>
+        <input type="text" name="name" id="myname" placeholder="Name" title="Name" required="required">	   </br>
+        <textarea type="text" name="content" id="mymessage" placeholder="message" title="Message" required="required" rows="3"></textarea>
+        </br>
+		<input type="text" name="_gotcha" style="display: none">
+        <button type="submit" class="btn btn-lg btn-primary">Send Email</button>
+    </form>
+</div>

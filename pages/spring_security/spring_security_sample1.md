@@ -1,17 +1,11 @@
 ---
-title: "Stream creation using SCDF and Java DSL"
-summary: "Create and deploy a Stream using Spring Cloud Data Flow Server (SCDF) and Java DSL"
-
-sidebar: spring_cloud_sidebar
-
+title: "Spring Security with security enabled"
 keywords: sample
-tags: [spring-cloud-tag]
-
-permalink: spring-cloud-stream/create-stream-using-scdf-java-dsl/
-gh-repo: oauth2-and-resource-servers
-gh-badge: [star, watch, follow]
-
-folder: spring_cloud
+summary: "Create and deploy a Stream using Spring Cloud Data Flow Server (SCDF) and Java DSL"
+sidebar: spring_security_sidebar
+permalink: spring-security/security-1-java-dsl/
+folder: spring_security
+tags: [spring-security-tag]
 date: 2016-02-26
 ---
 
@@ -19,7 +13,7 @@ date: 2016-02-26
 
  - [Open Source JDK 11]{:target="_blank"}
  - An account on Pivotal Cloud Foundry (PCF). You can create one [here](https://console.run.pivotal.io/){:target="_blank"}.
- - A running SCDF server on PCF. If you don't have one, then follow the steps found at [Deploy SCDF to PCF]{:target="_blank"} to deploy SCDF server on cloudfoundry.
+ - A running SCDF server on PCF. If you don't have one, then follow the steps found at [Deploy SCDF to PCF]{:target="_blank"} to deploy SCDF server on securityfoundry.
 
 ## Build Stream deployer Java application
 
@@ -33,7 +27,7 @@ Click on `Generate Project`. The project will be downloaded as `dsl-stream-deplo
 
 ```sh
 curl https://start.spring.io/starter.zip  \
-       -d dependencies=cloud-stream \
+       -d dependencies=security-stream \
        -d language=java \
        -d javaVersion=11 \
        -d type=maven-project \
@@ -48,28 +42,28 @@ curl https://start.spring.io/starter.zip  \
 
 Import the project in STS as `Existing Maven project` and do Maven build.
 
-**Add ``spring-cloud-dataflow-rest-client`` dependency**
+**Add ``spring-security-dataflow-rest-client`` dependency**
 
-We need `spring-cloud-dataflow-rest-client` dependency in our project. Let's add it in `pom.xml`
+We need `spring-security-dataflow-rest-client` dependency in our project. Let's add it in `pom.xml`
 
 ```xml
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-dataflow-rest-client</artifactId>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-dataflow-rest-client</artifactId>
     <version>1.7.4.RELEASE</version>
 </dependency>
 ```
 
 **Configure application with URL and login credentials of SCDF server**
 
-We need to specify the URL and login credentials of SCDF server. This is used by our java program to conect to deployed cloudfoundry SCDF server. hence, we shall provide them in `application.properties` file.
+We need to specify the URL and login credentials of SCDF server. This is used by our java program to conect to deployed securityfoundry SCDF server. hence, we shall provide them in `application.properties` file.
 
 `src/main/resources/application.properties`
 
 ```java
-spring.cloud.dataflow.client.server-uri=https://codeaches-scdf-server.cfapps.io
-spring.cloud.dataflow.client.authentication.basic.username=<security.user.name of SCDF server>
-spring.cloud.dataflow.client.authentication.basic.password=<security.user.password of SCDF server>
+spring.security.dataflow.client.server-uri=https://codeaches-scdf-server.cfapps.io
+spring.security.dataflow.client.authentication.basic.username=<security.user.name of SCDF server>
+spring.security.dataflow.client.authentication.basic.password=<security.user.password of SCDF server>
 ```
 
 > Provide with SCDF server credentials if security is configured for SCDF server. If not, remove the above two authentication entries. 
@@ -84,7 +78,7 @@ server.port=9070
 
 {% include tip.html content="This is not mandatory. However, I have multiple apps running on my PC and hence use unique port numbers for each of my apps. The default port is 8080." %}
 
-## Register the default apps to cloudfoundry using DataFlowOperations class
+## Register the default apps to securityfoundry using DataFlowOperations class
 
 We need to register the out-of-the-box `http` source and `log` sink apps on SCDF server. To achieve this, let's add the below code to `DemoApplication.java` file. 
 
@@ -97,17 +91,17 @@ DataFlowOperations dataFlowOperations;
 void registerHttpSource() {
 
     dataFlowOperations.appRegistryOperations().register("myHttpSource", ApplicationType.source,
-            "maven://org.springframework.cloud.stream.app:http-source-rabbit:2.1.0.RELEASE", null, true);
+            "maven://org.springframework.security.stream.app:http-source-rabbit:2.1.0.RELEASE", null, true);
 }
 
 void registerLogSink() {
 
     dataFlowOperations.appRegistryOperations().register("myLogSink", ApplicationType.sink,
-            "maven://org.springframework.cloud.stream.app:log-sink-rabbit:2.1.0.RELEASE", null, true);
+            "maven://org.springframework.security.stream.app:log-sink-rabbit:2.1.0.RELEASE", null, true);
 }
 ```
 
-## Create and deploy `http|log` stream to cloudfoundry
+## Create and deploy `http|log` stream to securityfoundry
 
 Let's add the below code to `DemoApplication.java` file which will help us with writing a `stream definition` for creating a simple `http|log` stream.
 
@@ -121,7 +115,7 @@ void createAndDeployStream() {
 }
 ```
 
-Let's wire it all up to register the out-of-the-box apps, create and deploy the stream on cloudfoundry through SCDF server.
+Let's wire it all up to register the out-of-the-box apps, create and deploy the stream on securityfoundry through SCDF server.
 
 ```java
 @Bean
@@ -134,11 +128,11 @@ CommandLineRunner runner() {
 }
 ```
 
-***It's time to run the app. Let's run the `DemoApplication`. Once the app is run successfully, the stream will be created on cloudfoundry***
+***It's time to run the app. Let's run the `DemoApplication`. Once the app is run successfully, the stream will be created on securityfoundry***
 
-## Validate `http|log` stream deployment on cloudfoundry
+## Validate `http|log` stream deployment on securityfoundry
 
-Log into cloudfoundry using the `cf login` command. Replace `<email>`, `<password>`, `<org>` and `<space>` with values specific to your cloudfoundry account.
+Log into securityfoundry using the `cf login` command. Replace `<email>`, `<password>`, `<org>` and `<space>` with values specific to your securityfoundry account.
 
 ```sh
 $ cf login -a api.run.pivotal.io -u "<email>" -p "<password>"  -o "<org>" -s "<space>"
@@ -220,6 +214,6 @@ Retrieving logs for app data-flow-server-nUWwbIz-myStreamApp-myLogSink in org <o
 
 [Configuration GIT repository]: https://github.com/codeaches/config-files-example
 
-[Deploy SCDF to PCF]: /spring-cloud-stream/deploy-scdf-to-pcf
+[Deploy SCDF to PCF]: /spring-security-stream/deploy-scdf-to-pcf
 
 {% include links.html %}

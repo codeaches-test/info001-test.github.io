@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+{% if page.date %}
+	<div class="post-meta">Updated on {{ page.date | date: "%b %-d, %Y" }}</div>
+{% endif %}
 
 <div class="post-header">
    <h1 class="post-title-main">{{ page.title }}</h1>
@@ -32,14 +35,30 @@ layout: default
 
 	{% include breadcrumbs.html %}
 
-   {% if page.summary %}
+    {% if page.summary %}
     <div class="summary">{{page.summary}}</div>
    {% endif %}
+
+    {% if page.gh-badge.size > 0 %}
+		<div id="header-gh-btns">
+        {% for badge in page.gh-badge %}
+        {% case badge %}
+        {% when 'star'%}
+        <iframe src="https://ghbtns.com/github-btn.html?user={{ page.gh-user }}&repo={{ page.gh-repo }}&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+        {% when 'watch'%}
+        <iframe src="https://ghbtns.com/github-btn.html?user={{ page.gh-user }}&repo={{ page.gh-repo }}&type=watch&v=2&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+        {% when 'fork'%}
+        <iframe src="https://ghbtns.com/github-btn.html?user={{ page.gh-user }}&repo={{ page.gh-repo }}&type=fork&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>  
+        {% when 'follow'%}
+        <iframe src="https://ghbtns.com/github-btn.html?user={{ page.gh-user }}&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+        {% endcase %}
+        {% endfor %}
+	    </div>
+    {% endif %}
 
     {% unless page.toc == false %}
     {% include toc.html %}
     {% endunless %}
-
 
     {% if site.github_editme_path %}
 
@@ -49,18 +68,22 @@ layout: default
 
 	{{content}}
 
+    {% if page.gh-repo %}
+	<a align= "center" target="_blank" href="https://github.com/{{page.gh-user}}/{{page.gh-repo}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Download the code on github</a>
+    {% endif %}
+
     <div class="tags">
         {% if page.tags != null %}
         <b>Tags: </b>
         {% assign projectTags = site.data.tags.allowed-tags %}
         {% for tag in page.tags %}
         {% if projectTags contains tag %}
-        <a href="/{{ "tag_" | append: tag | append: ".html" }}" class="btn btn-default navbar-btn cursorNorm" role="button">{{page.tagName}}{{tag}}</a>
+        <a href="/{{ tag | append: '/' }}" class="btn btn-default navbar-btn cursorNorm" role="button">{{page.tagName}}{{tag}}</a>
         {% endif %}
         {% endfor %}
         {% endif %}
     </div>
-
+<hr>
 {% include disqus.html %}
 
 </div>

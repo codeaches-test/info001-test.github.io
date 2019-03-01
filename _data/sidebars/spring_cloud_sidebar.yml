@@ -1,10 +1,9 @@
 # This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
 
-
 entries:
 - title: Sidebar
-  product: Spring Cloud Product
-  version: 11.0
+  product: Spring Cloud Tutorials
+  version: ""
   folders:
 
   - title:
@@ -20,13 +19,47 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Spring Cloud Getting Started
+  - title: Spring Cloud
     output: web, pdf
     folderitems:
-    - title: Spring Cloud home
+
+    - title: Introduction
       url: /spring-cloud/
       output: web
 
-    - title: Stream creation using SCDF and Java DSL
-      url: /spring-cloud/create-stream-using-scdf-java-dsl/
+  - title: Spring Cloud Stream
+    output: web, pdf
+    folderitems:
+
+    - title: Deploy SCDF to PCF
+      url: /spring-cloud-stream/deploy-scdf-to-pcf/
       output: web, pdf
+
+    - title: Create a Stream using SCDF shell
+      url: /spring-cloud-stream/create-stream-using-scdf-shell/
+      output: web, pdf
+
+    - title: Create a Stream using SCDF java DSL
+      url: /spring-cloud-stream/create-stream-using-scdf-java-dsl/
+      output: web, pdf
+
+  - title: Spring Cloud Config Server
+    output: web, pdf
+    folderitems:
+
+    - title: Register Spring Cloud Config Server
+      url: /spring-cloud-config/create-stream-using-scdf-java-dsl/
+      output: web, pdf
+
+    - title: Deploy Spring Cloud Config Client
+      url: /spring-cloud-config/create-stream-using-scdf-java-dsl/
+      output: web, pdf
+
+  - title: Quick Links
+    output: web, pdf
+    folderitems:
+  
+    - title: Spring Cloud Tags
+      url: /spring-cloud-tag/
+      output: web, pdf
+

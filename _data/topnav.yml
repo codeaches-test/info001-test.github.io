@@ -4,11 +4,9 @@ topnav:
 - title: Topnav
   items:
     - title: Home
-      url: /index.html
+      url: /
     - title: GitHub
-      external_url: https://github.com/tomjoht/documentation-theme-jekyll
-    - title: News
-      url: /news
+      external_url: https://github.com/codeaches/
 
 #Topnav dropdowns
 topnav_dropdowns:
@@ -16,13 +14,12 @@ topnav_dropdowns:
   folders:
     - title: Topics
       folderitems:
-        - title: Jekyll Documentation Theme
-          url: /mydoc_introduction.html
-        - title: Product 1
-          url: /p1_landing_page.html
-        - title: Product 2
-          url: /p2_landing_page.html
+
         - title: Spring Cloud
           url: /spring-cloud/
-        - title: Take Me Home
-          url: /index.html
+
+        - title: Spring Security
+          url: /spring-security/
+
+        - title: Spring Batch
+          url: /spring-batch/

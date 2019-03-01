@@ -1,8 +1,9 @@
 # This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
 
+
 entries:
-- title: Codeaches
-  product: Codeaches Tutorials
+- title: Sidebar
+  product: Spring Security Tutorials
   version: ""
   folders:
 
@@ -19,47 +20,30 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
+  - title: Spring Security
     output: web, pdf
     folderitems:
 
-    - title: Home
-      url: /
-      output: web, pdf
-      type: homepage
-
-    - title: About Me
-      url: /aboutme/
-      output: web, pdf
-
-    - title: Contact Me
-      url: /contact/
-      output: web, pdf
-
-  - title: Topics
-    output: web, pdf
-    folderitems:
-
-    - title: Spring Cloud
-      url: /spring-cloud/
-      output: web, pdf
-
-    - title: Spring Security
+    - title: Introduction
       url: /spring-security/
-      output: web, pdf
+      output: web
 
-  - title: All Tags
+  - title: Spring Security OAuth2
     output: web, pdf
     folderitems:
 
-    - title: Spring Cloud Tags
-      url: /spring-cloud-tag/
+    - title: Spring Security using JDBC Token Store
+      url: /spring-security/oauth2-and-resource-server/
       output: web, pdf
 
+    - title: Spring Security using JWT
+      url: /spring-security/jwt-oauth2-and-resource-server/
+      output: web, pdf
+
+  - title: Quick Links
+    output: web, pdf
+    folderitems:
+  
     - title: Spring Security Tags
       url: /spring-security-tag/
-      output: web, pdf
-
-    - title: Spring Batch Tags
-      url: /spring-batch-tag/
       output: web, pdf

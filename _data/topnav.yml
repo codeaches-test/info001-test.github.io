@@ -5,8 +5,12 @@ topnav:
   items:
     - title: Home
       url: /
-    - title: GitHub
-      external_url: https://github.com/codeaches/
+    - title: Spring Cloud Data Flow
+      url: /spring-cloud-dataflow/
+    - title: Spring Security
+      url: /spring-security/
+    - title: Spring Batch
+      url: /spring-batch/
 
 #Topnav dropdowns
 topnav_dropdowns:
@@ -15,8 +19,8 @@ topnav_dropdowns:
     - title: Topics
       folderitems:
 
-        - title: Spring Cloud
-          url: /spring-cloud/
+        - title: Spring Cloud Data Flow
+          url: /spring-cloud-dataflow/
 
         - title: Spring Security
           url: /spring-security/

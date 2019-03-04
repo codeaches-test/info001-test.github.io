@@ -8,8 +8,8 @@ keywords: sample
 tags: [spring-batch-tag]
 
 permalink: spring-batch/create-spring-batch-service/
-gh-repo: spring-batch-service
-gh-badge: [star, watch, follow]
+gh-repo: spring-batch-create-spring-batch-service
+gh-badge: [star, watch, follow, download, issue]
 
 folder: spring_batch
 date: 2016-02-26

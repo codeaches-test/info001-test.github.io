@@ -5,6 +5,7 @@ entries:
 - title: Sidebar
   product: Spring Batch Tutorials
   version: ""
+  homepage: /spring-batch/
   folders:
 
   - title:
@@ -24,14 +25,26 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Introduction
-      url: /spring-batch/
-      output: web
-
     - title: Spring Batch Quick Links
       url: /spring-batch-tag/
       output: web, pdf
 
     - title: Create a Spring Batch Service
       url: /spring-batch/create-spring-batch-service/
+      output: web, pdf
+
+    - title: Multi-threaded Step (Single Process)
+      url: /spring-batch/multi-threaded-step-single-process/
+      output: web, pdf
+
+    - title: Parallel Steps (single process)
+      url: /spring-batch/parallel-steps-single-process/
+      output: web, pdf
+
+    - title: Remote Chunking of Step (multi process)
+      url: /spring-batch/remote-chunking-of-step-multi-process/
+      output: web, pdf
+
+    - title: Partitioning a Step (single or multi process)
+      url: /spring-batch/partitioning-a-step/
       output: web, pdf

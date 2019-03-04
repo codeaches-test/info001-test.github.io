@@ -19,26 +19,13 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
-    output: web, pdf
-    folderitems:
-
-    - title: Home
-      url: /
-      output: web, pdf
-      type: homepage
-
-    - title: About Me
-      url: /aboutme/
-      output: web, pdf
-
-    - title: Contact Me
-      url: /contact/
-      output: web, pdf
-
   - title: Topics
     output: web, pdf
     folderitems:
+
+    - title: Introduction
+      url: /
+      output: web, pdf
 
     - title: Spring Cloud
       url: /spring-cloud/
@@ -66,4 +53,16 @@ entries:
 
     - title: Spring Batch Tags
       url: /spring-batch-tag/
+      output: web, pdf
+
+  - title: About
+    output: web, pdf
+    folderitems:
+
+    - title: About Me
+      url: /aboutme/
+      output: web, pdf
+
+    - title: Contact Me
+      url: /contact/
       output: web, pdf

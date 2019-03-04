@@ -2,8 +2,9 @@
 
 entries:
 - title: Sidebar
-  product: Spring Cloud Tutorials
+  product: Spring Cloud Data Flow Tutorials
   version: ""
+  homepage: /spring-cloud-dataflow/
   folders:
 
   - title:
@@ -19,42 +20,82 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Spring Cloud
+  - title: Spring Cloud Config Server
     output: web, pdf
     folderitems:
 
-    - title: Introduction
-      url: /spring-cloud/
-      output: web
+    - title: Register Spring Cloud Config Server
+      url: /spring-cloud-dataflow/register-spring-cloud-config-server/
+      output: web, pdf
 
-    - title: Spring Cloud Quick Links
-      url: /spring-cloud-tag/
+    - title: Create Spring Cloud Config Client
+      url: /spring-cloud-dataflow/create-spring-cloud-config-client/
+      output: web, pdf
+
+  - title: Spring Cloud Data Flow
+    output: web, pdf
+    folderitems:
+
+    - title: Deploy SCDF to PCF
+      url: /spring-cloud-dataflow/deploy-scdf-to-pcf/
+      output: web, pdf
+
+    - title: Dashboard
+      url: /spring-cloud-dataflow/dashboard/
       output: web, pdf
 
   - title: Spring Cloud Stream
     output: web, pdf
     folderitems:
 
-    - title: Deploy SCDF to PCF
-      url: /spring-cloud-stream/deploy-scdf-to-pcf/
+    - title: Create a Stream
+      url: /spring-cloud-dataflow/create-stream/
       output: web, pdf
 
-    - title: Create a Stream using SCDF shell
-      url: /spring-cloud-stream/create-stream-using-scdf-shell/
+    - title: Create a Stream using java DSL
+      url: /spring-cloud-dataflow/create-stream-using-java-dsl/
       output: web, pdf
 
-    - title: Create a Stream using SCDF java DSL
-      url: /spring-cloud-stream/create-stream-using-scdf-java-dsl/
+    - title: Stream Processing
+      url: /spring-cloud-dataflow/stream-processing/
       output: web, pdf
 
-  - title: Spring Cloud Config Server
+    - title: Named Destinations
+      url: /spring-cloud-dataflow/named-destinations/
+      output: web, pdf
+
+    - title: Tap a Stream (Create a Tap for Stream)
+      url: /spring-cloud-dataflow/tap-a-stream/
+      output: web, pdf
+
+  - title: Spring Cloud Task
     output: web, pdf
     folderitems:
 
-    - title: Register Spring Cloud Config Server
-      url: /spring-cloud-config/create-stream-using-scdf-java-dsl/
+    - title: Create a Task
+      url: /spring-cloud-dataflow/create-task/
       output: web, pdf
 
-    - title: Deploy Spring Cloud Config Client
-      url: /spring-cloud-config/create-stream-using-scdf-java-dsl/
+  - title: Spring Cloud Job
+    output: web, pdf
+    folderitems:
+
+    - title: Create a Job
+      url: /spring-cloud-dataflow/create-job/
+      output: web, pdf
+
+  - title: Spring Cloud Scheduling
+    output: web, pdf
+    folderitems:
+
+    - title: Create a Scheduler
+      url: /spring-cloud-dataflow/create-scheduler/
+      output: web, pdf
+
+  - title: Quick Links
+    output: web, pdf
+    folderitems:
+
+    - title: Spring Cloud Quick Links
+      url: /spring-cloud-tag/
       output: web, pdf

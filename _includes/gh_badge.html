@@ -1,0 +1,20 @@
+{% if page.gh-badge.size > 0 %}
+<div id="header-gh-btns">
+   {% for badge in page.gh-badge %}
+   {% case badge %}
+   {% when 'star'%}
+   <a class="github-button" href="https://github.com/{{ page.gh-user }}/{{ page.gh-repo }}" data-icon="octicon-star" data-show-count="true" aria-label="Star {{ page.gh-user }}/{{ page.gh-repo }} on GitHub">Star</a>
+   {% when 'watch'%}
+   <a class="github-button" href="https://github.com/{{ page.gh-user }}/{{ page.gh-repo }}/subscription" data-icon="octicon-eye" data-show-count="true" aria-label="Watch {{ page.gh-user }}/{{ page.gh-repo }} on GitHub">Watch</a>
+   {% when 'fork'%}
+   <a class="github-button" href="https://github.com/{{ page.gh-user }}/{{ page.gh-repo }}/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork {{ page.gh-user }}/{{ page.gh-repo }} on GitHub">Fork</a> 
+   {% when 'follow'%}
+   <a class="github-button" href="https://github.com/{{ page.gh-user }}" data-show-count="true" aria-label="Follow @{{ page.gh-user }} on GitHub">Follow @{{ page.gh-user }}</a>
+   {% when 'download'%}
+   <a class="github-button" href="https://github.com/{{ page.gh-user }}/{{ page.gh-repo }}/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download {{ page.gh-user }}/{{ page.gh-repo }} on GitHub">Download the code from Github</a>
+   {% when 'issue'%}
+   <a class="github-button" href="https://github.com/{{ page.gh-user }}/{{ page.gh-repo }}/issues" data-show-count="true" aria-label="Issue {{ page.gh-user }}/{{ page.gh-repo }} on GitHub">Report a bug on Github</a>
+   {% endcase %}
+   {% endfor %}
+</div>
+{% endif %}

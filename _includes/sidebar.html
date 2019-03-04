@@ -2,11 +2,25 @@
 
 <ul id="mysidebar" class="nav">
   <li class="sidebarTitle">{{sidebar[0].product}} {{sidebar[0].version}}</li>
+
+  <!-- Added Introduction page -->
+  {% assign homepage = sidebar[0].homepage %}
+  {% if homepage %}
+
+    {% if page.url == homepage %}
+      <li class="active">
+    {% else %}
+      <li>
+    {% endif %}
+    <a href="{{ homepage }}">Introduction</a>
+    </li>
+  {% endif %}
+
   {% for entry in sidebar %}
   {% for folder in entry.folders %}
   {% if folder.output contains "web" %}
   <li>
-      <a href="#">{{ folder.title }}</a>
+     <a href="#">{{ folder.title }}</a>
       <ul>
           {% for folderitem in folder.folderitems %}
           {% if folderitem.output contains "web" %}
@@ -47,11 +61,6 @@
      {% endif %}
       {% endfor %}
       {% endfor %}
-      <!-- if you aren't using the accordion, uncomment this block:
-         <p class="external">
-             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
-         </p>
-         -->
 </ul>
 
 <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->

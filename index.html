@@ -1,11 +1,10 @@
 ---
 title: "Codeaches Home Page"
-keywords: sample homepage
-tags: [spring-security-tag,spring-cloud-tag,spring-batch-tag]
+keywords: spring security,spring cloud,spring batch
 sidebar: codeaches_home_sidebar
 permalink: /
 disqus_disable: true
-summary: Spring Cloud, Mocroservices Tutorials
+summary: Java Spring Framework and Spring Microservices Tutorials
 ---
 
 {% if site.output == "pdf" %}
@@ -18,12 +17,31 @@ summary: Spring Cloud, Mocroservices Tutorials
 {% endunless %}
 
 <div class="filter-options">
+   <button class="btn btn-primary" data-group="all">All</button>
+   <button class="btn btn-primary" data-group="spring-batch-tag">Spring Batch</button>
    <button class="btn btn-primary" data-group="spring-cloud-tag">Spring Cloud</button>      
    <button class="btn btn-primary" data-group="spring-security-tag">Spring Security</button>
-   <button class="btn btn-primary" data-group="spring-batch-tag">Spring Batch</button>
 </div>
 
 <div id="grid" class="row">
+
+   <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["spring-batch-tag"]'>
+      <div class="panel panel-default">
+         <div class="panel-heading">Spring Batch</div>
+         <div class="panel-body">
+            When you're building, spring batch, and deploying your Jekyll site, you might find these topics helpful.
+            <ul>
+               {% for page in site.pages %}
+               {% for tag in page.tags %}
+               {% if tag == "spring-batch-tag" %}
+               <li><a href="{{page.url}}">{{page.title}}</a></li>
+               {% endif %}
+               {% endfor %}
+               {% endfor %}
+            </ul>
+         </div>
+      </div>
+   </div>
 
    <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["spring-cloud-tag"]'>
       <div class="panel panel-default">
@@ -52,24 +70,6 @@ summary: Spring Cloud, Mocroservices Tutorials
                {% for page in site.pages %}
                {% for tag in page.tags %}
                {% if tag == "spring-security-tag" %}
-               <li><a href="{{page.url}}">{{page.title}}</a></li>
-               {% endif %}
-               {% endfor %}
-               {% endfor %}
-            </ul>
-         </div>
-      </div>
-   </div>
-
-   <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["spring-batch-tag"]'>
-      <div class="panel panel-default">
-         <div class="panel-heading">Spring Batch</div>
-         <div class="panel-body">
-            When you're building, spring batch, and deploying your Jekyll site, you might find these topics helpful.
-            <ul>
-               {% for page in site.pages %}
-               {% for tag in page.tags %}
-               {% if tag == "spring-batch-tag" %}
                <li><a href="{{page.url}}">{{page.title}}</a></li>
                {% endif %}
                {% endfor %}

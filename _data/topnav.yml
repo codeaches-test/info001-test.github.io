@@ -5,8 +5,8 @@ topnav:
   items:
     - title: Home
       url: /
-    - title: Spring Cloud Data Flow
-      url: /spring-cloud-dataflow/
+    - title: Spring Cloud
+      url: /spring-cloud/
     - title: Spring Security
       url: /spring-security/
     - title: Spring Batch
@@ -19,8 +19,8 @@ topnav_dropdowns:
     - title: Topics
       folderitems:
 
-        - title: Spring Cloud Data Flow
-          url: /spring-cloud-dataflow/
+        - title: Spring Cloud
+          url: /spring-cloud/
 
         - title: Spring Security
           url: /spring-security/

@@ -20,6 +20,7 @@ summary: Java Spring Framework and Spring Microservices Tutorials
 <div class="filter-options">
    <button class="btn btn-primary" data-group="all">All</button>
    <button class="btn btn-primary" data-group="spring-batch-tag">Spring Batch</button>
+   <button class="btn btn-primary" data-group="spring-cloud-config-tag">Spring Cloud Config</button>      
    <button class="btn btn-primary" data-group="spring-cloud-tag">Spring Cloud</button>      
    <button class="btn btn-primary" data-group="spring-security-tag">Spring Security</button>
 </div>
@@ -44,9 +45,27 @@ summary: Java Spring Framework and Spring Microservices Tutorials
       </div>
    </div>
 
+   <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["spring-cloud-config-tag"]'>
+      <div class="panel panel-default">
+         <div class="panel-heading">Spring Cloud Config</div>
+         <div class="panel-body">
+            When you're building, spring-cloud-config-tag, and deploying your Jekyll site, you might find these topics helpful.
+            <ul>
+               {% for page in site.pages %}
+               {% for tag in page.tags %}
+               {% if tag == "spring-cloud-config-tag" %}
+               <li><a href="{{page.url}}">{{page.title}}</a></li>
+               {% endif %}
+               {% endfor %}
+               {% endfor %}
+            </ul>
+         </div>
+      </div>
+   </div>
+
    <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["spring-cloud-tag"]'>
       <div class="panel panel-default">
-         <div class="panel-heading">Spring Cloud</div>
+         <div class="panel-heading">Spring Cloud Data Flow</div>
          <div class="panel-body">
             When you're building, spring-cloud-tag, and deploying your Jekyll site, you might find these topics helpful.
             <ul>

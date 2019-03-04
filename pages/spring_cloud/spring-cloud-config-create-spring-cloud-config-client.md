@@ -5,9 +5,9 @@ summary: "Create Spring Cloud Config Client"
 sidebar: spring_cloud_sidebar
 
 keywords: sample
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-config-tag]
 
-permalink: spring-cloud-dataflow/create-spring-cloud-config-client/
+permalink: spring-cloud-config/create-spring-cloud-config-client/
 gh-repo: spring-cloud-config-client
 gh-badge: [star, watch, follow, download, issue]
 

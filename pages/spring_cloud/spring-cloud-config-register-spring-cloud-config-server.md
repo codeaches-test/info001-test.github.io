@@ -5,9 +5,9 @@ summary: "Register Spring Cloud Config Server"
 sidebar: spring_cloud_sidebar
 
 keywords: sample
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-config-tag]
 
-permalink: spring-cloud-dataflow/register-spring-cloud-config-server/
+permalink: spring-cloud-config/register-spring-cloud-config-server/
 gh-repo: spring-cloud-config-server
 gh-badge: [star, watch, follow, download, issue]
 

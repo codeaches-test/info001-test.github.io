@@ -2,9 +2,9 @@
 
 entries:
 - title: Sidebar
-  product: Spring Cloud Data Flow Tutorials
+  product: Spring Cloud Tutorials
   version: ""
-  homepage: /spring-cloud-dataflow/
+  homepage: /spring-cloud/
   folders:
 
   - title:
@@ -20,16 +20,16 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Spring Cloud Config Server
+  - title: Spring Cloud Config
     output: web, pdf
     folderitems:
 
     - title: Register Spring Cloud Config Server
-      url: /spring-cloud-dataflow/register-spring-cloud-config-server/
+      url: /spring-cloud-config/register-spring-cloud-config-server/
       output: web, pdf
 
     - title: Create Spring Cloud Config Client
-      url: /spring-cloud-dataflow/create-spring-cloud-config-client/
+      url: /spring-cloud-config/create-spring-cloud-config-client/
       output: web, pdf
 
   - title: Spring Cloud Data Flow
@@ -95,6 +95,10 @@ entries:
   - title: Quick Links
     output: web, pdf
     folderitems:
+
+    - title: Spring Cloud Config Quick Links
+      url: /spring-cloud-config-tag/
+      output: web, pdf
 
     - title: Spring Cloud Quick Links
       url: /spring-cloud-tag/

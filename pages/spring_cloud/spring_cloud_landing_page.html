@@ -1,15 +1,28 @@
 ---
-title: Spring Cloud Data Flow Tutotial
+title: Spring Cloud Tutotial
 
 summary: This shows a sample layout for a knowledge base. Each square could link to a tag archive page. In this example, font icons from Font Awesome are used for the graphics, and the layout is pulled from the Modern Business theme.
 
 keywords: mydoc
 sidebar: spring_cloud_sidebar
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-config-tag]
 toc: false
-permalink: spring-cloud-dataflow/
+permalink: spring-cloud/
 folder: spring_cloud
 ---
+
+This shows a sample layout for a spring cloud base. Each square could link to a tag archive page. In this example, font icons from Font Awesome are used for the graphics, and the layout is pulled from the Modern Business theme.
+
+<ul>
+   {% assign sorted_pages = site.pages | sort: 'title' %}
+   {% for page in sorted_pages %}
+   {% for tag in page.tags %}
+   {% if tag == "spring-cloud-config-tag" %}
+   <li><a href="{{ page.url }}">{{page.title}}</a></li>
+   {% endif %}
+   {% endfor %}
+   {% endfor %}
+</ul>
 
 This shows a sample layout for a spring cloud base. Each square could link to a tag archive page. In this example, font icons from Font Awesome are used for the graphics, and the layout is pulled from the Modern Business theme.
 

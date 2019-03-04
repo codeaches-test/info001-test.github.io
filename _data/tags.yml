@@ -3,5 +3,6 @@
 # In other words, the last line must be the last tag in the allowed-tags list.
 allowed-tags:
   - spring-cloud-tag
+  - spring-cloud-config-tag
   - spring-security-tag
   - spring-batch-tag

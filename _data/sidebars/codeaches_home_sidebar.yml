@@ -27,8 +27,8 @@ entries:
       url: /
       output: web, pdf
 
-    - title: Spring Cloud
-      url: /spring-cloud/
+    - title: Spring Cloud Data Flow
+      url: /spring-cloud-dataflow/
       output: web, pdf
 
     - title: Spring Security

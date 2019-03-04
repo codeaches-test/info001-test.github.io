@@ -1,4 +1,4 @@
-{% if breadcrumbs.disabled == nil or  breadcrumbs.disabled == false %}
+{% if page.breadcrumbs_disable == nil or  page.breadcrumbs_disable == false %}
 
 <div id="breadcrumb" class="breadcrumb">
    {% assign crumbs = page.url | remove:'/index.html' | split: '/' %}

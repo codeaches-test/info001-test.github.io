@@ -32,21 +32,13 @@ entries:
       url: /spring-cloud-config/create-spring-cloud-config-client/
       output: web, pdf
 
-  - title: Spring Cloud Data Flow
+  - title: Spring Cloud Stream
     output: web, pdf
     folderitems:
 
     - title: Deploy SCDF to PCF
       url: /spring-cloud-dataflow/deploy-scdf-to-pcf/
       output: web, pdf
-
-    - title: Dashboard
-      url: /spring-cloud-dataflow/dashboard/
-      output: web, pdf
-
-  - title: Spring Cloud Stream
-    output: web, pdf
-    folderitems:
 
     - title: Create a Stream
       url: /spring-cloud-dataflow/create-stream/
@@ -90,6 +82,14 @@ entries:
 
     - title: Create a Scheduler
       url: /spring-cloud-dataflow/create-scheduler/
+      output: web, pdf
+
+  - title: Spring Cloud Dashboard
+    output: web, pdf
+    folderitems:
+
+    - title: Dashboard
+      url: /spring-cloud-dataflow/dashboard/
       output: web, pdf
 
   - title: Quick Links

@@ -5,7 +5,7 @@ summary: "Create a Stream using java DSL"
 sidebar: spring_cloud_sidebar
 
 keywords: sample
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-dataflow-tag]
 
 permalink: spring-cloud-dataflow/create-stream-using-java-dsl/
 gh-repo: create-stream-using-java-dsl

@@ -5,7 +5,7 @@ summary: "Create a Job"
 sidebar: spring_cloud_sidebar
 
 keywords: sample
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-dataflow-tag]
 
 permalink: spring-cloud-dataflow/create-job/
 gh-repo: create-job

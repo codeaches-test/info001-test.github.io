@@ -5,7 +5,7 @@ summary: "Tap a Stream (Create a Tap for Stream)"
 sidebar: spring_cloud_sidebar
 
 keywords: sample
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-dataflow-tag]
 
 permalink: spring-cloud-dataflow/tap-a-stream/
 gh-repo: tap-a-stream

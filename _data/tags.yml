@@ -4,5 +4,6 @@
 allowed-tags:
   - spring-cloud-tag
   - spring-cloud-config-tag
+  - spring-cloud-dataflow-tag
   - spring-security-tag
   - spring-batch-tag

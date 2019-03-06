@@ -5,7 +5,7 @@ summary: "Deploy SCDF to PCF"
 sidebar: spring_cloud_sidebar
 
 keywords: sample
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-dataflow-tag]
 
 permalink: spring-cloud-dataflow/deploy-scdf-to-pcf/
 gh-repo: deploy-scdf-to-pcf

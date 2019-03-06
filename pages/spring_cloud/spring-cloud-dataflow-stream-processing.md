@@ -5,7 +5,7 @@ summary: "Stream Processing"
 sidebar: spring_cloud_sidebar
 
 keywords: sample
-tags: [spring-cloud-tag]
+tags: [spring-cloud-tag,spring-cloud-dataflow-tag]
 
 permalink: spring-cloud-dataflow/stream-processing/
 gh-repo: stream-processing

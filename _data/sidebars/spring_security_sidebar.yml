@@ -25,14 +25,14 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Spring Security Quick Links
-      url: /spring-security-tag/
-      output: web, pdf
-
     - title: Spring Security OAuth2 Authorization using Jdbc Token Store
       url: /spring-security/oauth2-authorization-jdbc-token-store/
       output: web, pdf
 
     - title: Spring Security OAuth2 Authorization using JWT (Java Web Token)
       url: /spring-security/oauth2-authorization-jwt/
+      output: web, pdf
+
+    - title: Spring Security Quick Links
+      url: /spring-security-tag/
       output: web, pdf

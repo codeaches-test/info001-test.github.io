@@ -75,6 +75,7 @@ defaults:
       sidebar: codeaches_home_sidebar
       topnav: topnav
       gh-user: codeaches
+      author: Pavan Gurudutt
   -
     scope:
       path: ""
@@ -85,7 +86,7 @@ defaults:
       search: true
       tooltip: true
       gh-user: codeaches
-
+      author: Pavan Gurudutt
   -
     scope:
       path: ""
@@ -97,6 +98,7 @@ defaults:
       sidebar: codeaches_home_sidebar
       topnav: topnav
       gh-user: codeaches
+      author: Pavan Gurudutt
 
 # these are defaults used for the frontmatter for these file types
 
@@ -113,6 +115,28 @@ description: "Intended as a documentation theme based on Jekyll for technical wr
 url: https://info001-test.github.io
 baseurl: ""
 
+# Authors
+# https://en.gravatar.com/codeaches.json
+default-author-id: pavan
+authors:
+  pavan:
+    givenName: Pavan
+    familyName: Gurudutt
+    name: Pavan Gurudutt
+    gravatar: bb0ca13667bdacccc24b8a4995f593a7
+    email: info@codeaches.com
+    web: https://codeaches.com/
+    twitter: https://twitter.com/pavanapsc
+    description: "Author of Codeaches, a tutorial website about Spring Boot and Spring Cloud technologies"
+  gurudutt: 
+    givenName: Pavan
+    familyName: Gurudutt
+    name: Pavan Gurudutt
+    gravatar: bb0ca13667bdacccc24b8a4995f593a7
+    email: info@codeaches.com
+    web: https://codeaches.com/
+    twitter: https://twitter.com/pavanapsc
+    description: "Author of Codeaches, a tutorial website about Spring Boot and Spring Cloud technologies"
 
 plugins:
   - jekyll-redirect-from

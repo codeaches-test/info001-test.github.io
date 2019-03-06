@@ -14,7 +14,9 @@ gh-repo: spring-security-oauth2-authorization-jwt
 gh-badge: [star, watch, follow, download, issue]
 
 folder: spring_security
-date: 2016-02-26
+
+date_published: 2016-02-26
+date_modified: 2016-02-27
 ---
 
 ## Prerequisites {#prerequisites}

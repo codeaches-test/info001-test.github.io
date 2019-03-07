@@ -17,6 +17,7 @@ folder: spring_security
 
 date_published: 2016-02-26
 date_modified: 2016-02-27
+
 ---
 
 ## Prerequisites {#prerequisites}
@@ -595,5 +596,3 @@ curl -X GET http://localhost:8010/favouritePet \
 ## Summary {#summary}
 
 Congratulations! You just created a Spring Boot OAuth2 Authorization and Resource Servers with Jdbc Token Store and BCrypt Password Encoder.
-
-{% include links.html %}

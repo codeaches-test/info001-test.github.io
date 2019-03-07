@@ -15,4 +15,4 @@ folder: spring_cloud
 date: 2016-02-26
 ---
 
-{% include links.html %}
+

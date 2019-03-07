@@ -15,4 +15,4 @@ folder: spring_batch
 date: 2016-02-26
 ---
 
-{% include links.html %}
+

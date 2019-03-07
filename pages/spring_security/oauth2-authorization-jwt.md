@@ -585,5 +585,3 @@ curl -X GET http://localhost:8011/favouritePet \
 ## Summary {#summary}
 
 Congratulations! You just created a Spring Boot OAuth2 Authorization and Resource Servers with JWT token.
-
-{% include links.html %}

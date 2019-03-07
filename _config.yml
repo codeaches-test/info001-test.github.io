@@ -86,14 +86,6 @@ defaults:
       gh-user: codeaches
       author: Pavan Gurudutt
 
-# these are defaults used for the frontmatter for these file types
-
-sidebars:
-- codeaches_home_sidebar
-- spring_cloud_sidebar
-- spring_security_sidebar
-- spring_batch_sidebar
-
 description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
 # the description is used in the feed.xml file
 
@@ -123,6 +115,14 @@ authors:
     web: https://codeaches.com/
     twitter: https://twitter.com/pavanapsc
     description: "Author of Codeaches, a tutorial website about Spring Boot and Spring Cloud technologies"
+
+logo_width: 32
+logo_height: 32
+logo_url: /images/favicon.ico
+
+img_width: 34
+img_height: 34
+img_url: /images/favicon.ico
 
 plugins:
   - jekyll-redirect-from

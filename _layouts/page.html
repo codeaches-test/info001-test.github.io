@@ -6,8 +6,8 @@ layout: default
 	{% assign author = site.authors["pavan"] %}
 {% endif %}
 
-{% if page.date and author %}
-	<div class="post-meta">By {{ author.name }} | Updated on {{ page.date_modified | default: page.date_published | date: "%b %-d, %Y" }} | Published on {{ page.date_published | date: "%b %-d, %Y" }}</div>
+{% if page.date_published and author %}
+	<div class="post-meta">By {{ author.name }} | Updated on {{ page.date_modified | default: page.date_published | date: "%b %-d, %Y" }}</div>
 {% endif %}
 
 <div class="post-header">

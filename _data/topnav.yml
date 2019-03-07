@@ -16,6 +16,7 @@ topnav:
 topnav_dropdowns:
 - title: Topnav dropdowns
   folders:
+
     - title: Topics
       folderitems:
 
@@ -27,3 +28,12 @@ topnav_dropdowns:
 
         - title: Spring Batch
           url: /spring-batch/
+
+    - title: About
+      folderitems:
+
+        - title: About Me
+          url: /aboutme/
+
+        - title: Contact Me
+          url: /contact/

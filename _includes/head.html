@@ -4,22 +4,23 @@
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
 <title>{{ page.title }} | {{ site.site_title }}</title>
-<link rel="stylesheet" href="/css/syntax.css">
+
+<link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
-<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/modern-business.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/customstyles.css">
-<link rel="stylesheet" href="/css/boxshadowproperties.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/customstyles.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/boxshadowproperties.css">
 <!-- most color styles are extracted out to here -->
-<link rel="stylesheet" href="/css/theme-blue.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/theme-blue.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script src="/js/jquery.navgoco.min.js"></script>
+<script src="{{ site.baseurl }}/js/jquery.navgoco.min.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -28,19 +29,25 @@
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-<script src="/js/toc.js"></script>
-<script src="/js/customscripts.js"></script>
+<script src="{{ site.baseurl }}/js/toc.js"></script>
+<script src="{{ site.baseurl }}/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="shortcut icon" href="{{ site.baseurl }}/images/favicon.ico">
 
-<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.baseurl }}/feed.xml">
 
-<!--======================================-->
-<!--======================================-->
+<!--============================================================================
+JSON LD
+Test using https://search.google.com/structured-data/testing-tool#
+==============================================================================-->
 {% assign author = site.authors[page.author] %}
 {% if author == nil %}
 	{% assign author = site.authors["pavan"] %}
 {% endif %}
+
+{% assign datePublished = {{ page.date_published }} %}
+
+{% assign dateModified = {{ page.date_modified | default: page.date_published }} %}
 
 <script type="application/ld+json">
 {
@@ -52,8 +59,8 @@
   "keywords": {{ page.keywords | jsonify }},
   "description": {{ page.summary | strip_newlines | strip | jsonify }},
   "articleBody": {{ page.content | strip_html | jsonify }},
-  "datePublished": {{ page.date_published | jsonify }},
-  "dateModified": {{ page.date_modified | default: page.date_published | jsonify }},
+  "datePublished": {{ datePublished | default: site.time | jsonify }},
+  "dateModified": {{ dateModified | default: site.time | jsonify }},
   "author": {
     "@type": "Person",
     "name": {{ author.name | jsonify }},

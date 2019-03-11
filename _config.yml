@@ -21,6 +21,8 @@ disqus_shortname: https-codeaches-com
 google_analytics: UA-131170501-1
 # if you have google-analytics ID, put it in. if not, edit this value to blank.
 
+formspree_io_id: pavan@codeaches.com
+
 host: 127.0.0.1
 # the preview server used. Leave as is.
 
@@ -106,10 +108,10 @@ authors:
     web: https://codeaches.com/
     twitter: https://twitter.com/pavanapsc
     description: "Author of Codeaches, a tutorial website about Spring Boot and Spring Cloud technologies"
-  gurudutt: 
-    givenName: Pavan
-    familyName: Gurudutt
-    name: Pavan Gurudutt
+  someone: 
+    givenName: somegivenname
+    familyName: somefamilyname
+    name: Some Name
     gravatar: bb0ca13667bdacccc24b8a4995f593a7
     email: info@codeaches.com
     web: https://codeaches.com/
@@ -120,8 +122,8 @@ logo_width: 32
 logo_height: 32
 logo_url: /images/favicon.ico
 
-img_width: 34
-img_height: 34
+img_width: 32
+img_height: 32
 img_url: /images/favicon.ico
 
 plugins:

@@ -8,19 +8,60 @@ sidebar: codeaches_home_sidebar
 permalink: contact/
 folder: codeaches_home
 ---
-
-<div id="contact-form">
-    <form action="https://formspree.io/{{ site.formspree_io_id }}" method="POST" >
-        <input type="hidden" name="_subject" value="New submission from codeaches.com">
-		<input
-            type="hidden" name="_next"
-            value="./formspreeresponse?message=Your message was sent successfully, thanks!" />
-
-        <input type="email" name="_replyto" id="myemail" placeholder="Your Email" title="Email" required="required"></br>
-        <input type="text" name="name" id="myname" placeholder="Name" title="Name" required="required">	   </br>
-        <textarea type="text" name="content" id="mymessage" placeholder="message" title="Message" required="required" rows="3"></textarea>
-        </br>
-		<input type="text" name="_gotcha" style="display: none">
-        <button type="submit" class="btn btn-lg btn-primary">Send Email</button>
-    </form>
+<style>
+   form.wj-contact input[type="text"],input[type="email"], form.wj-contact textarea[type="text"] {
+   width: 50%;
+   vertical-align: middle;
+   margin-top: 0.25em;
+   margin-bottom: 0.5em;
+   padding: 0.75em;
+   font-weight: lighter;
+   border-style: solid;
+   border-color: #347DBE;
+   outline-color: #347DBE;
+   border-width: 1px;
+   border-radius: 3px;
+   transition: box-shadow .2s ease;
+   }
+   .form-actions {
+   margin: 0;
+   text-align: left;
+   }
+   .test {
+   background-color: #347DBE;
+   color: white;
+   }
+</style>
+<div>
+   <h1 align = "center">Pavan Gurudutt</h1>
+   <p class="about-text">
+      <span class="fa fa-briefcase about-icon"></span> Java Application
+      Programmer.
+   </p>
+   <p class="about-text">
+      <span class="fa fa-graduation-cap about-icon"></span> Obtained my
+      Bachelors in <strong>Electronics and Communications</strong> from Visvesvaraya Technological University
+   </p>
+   <p class="about-text">
+      <span class="fa fa-code about-icon"></span> Lately, I started writing <strong>Java Spring
+      Boot and Spring Cloud based tutorials</strong> to learn and to help others.
+   </p>
+   <p class="about-text">
+      <span class="fa fa-globe about-icon"></span> Grew up in <strong><i>Bangalore,
+      India</i></strong>
+   </p>
+   <br>
+   <p class="about-text">
+      <span class="fa fa-envelope about-icon"></span> <strong><i>Like to contribute? Get in touch with me!</i></strong>
+   </p>
 </div>
+<form class="wj-contact" action="https://formspree.io/{{ site.formspree_io_id }}" method="POST">
+   <input type="email" name="_replyto" placeholder="Email Address">
+   <textarea type="text" name="content" rows="4" placeholder="Message"></textarea>
+   <input type="hidden" name="_next" value="/contactresponse/" />
+   <input type="hidden" name="_subject" value="Submission from Codeaches website">
+   <input type="text" name="_gotcha" style="display:none">
+   <div class="form-actions">
+      <button type="submit" class="btn test">Send Email</button>
+   </div>
+</form>

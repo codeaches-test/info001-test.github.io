@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Pavan Gurudutt
+title: Contact Me
 keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
 last_updated: July 3, 2016
 tags: [getting_started]
@@ -8,29 +8,60 @@ sidebar: codeaches_home_sidebar
 permalink: aboutme/
 folder: codeaches_home
 ---
-
+<style>
+   form.wj-contact input[type="text"],input[type="email"], form.wj-contact textarea[type="text"] {
+   width: 50%;
+   vertical-align: middle;
+   margin-top: 0.25em;
+   margin-bottom: 0.5em;
+   padding: 0.75em;
+   font-weight: lighter;
+   border-style: solid;
+   border-color: #347DBE;
+   outline-color: #347DBE;
+   border-width: 1px;
+   border-radius: 3px;
+   transition: box-shadow .2s ease;
+   }
+   .form-actions {
+   margin: 0;
+   text-align: left;
+   }
+   .test {
+   background-color: #347DBE;
+   color: white;
+   }
+</style>
 <div>
-    <h1 align = "center">Pavan Gurudutt</h1>
-
-    <p class="about-text">
-        <span class="fa fa-briefcase about-icon"></span> Java Application
-        Programmer.
-    </p>
-    <p class="about-text">
-        <span class="fa fa-graduation-cap about-icon"></span> Obtained my
-        Bachelors in <strong>Electronics and Communications</strong> from <a
-            href="http://vtu.ac.in/en/" target="_blank">VTU</a>
-    </p>
-    <p class="about-text">
-        <span class="fa fa-code about-icon"></span> Lately, I started writing <strong>Java Spring
-        Boot and Spring Cloud based tutorials</strong> to learn and to help others.
-    </p>
-    <p class="about-text">
-        <span class="fa fa-globe about-icon"></span> Grew up in <strong><i>Bangalore,
-        India</i></strong>
-    </p>
-	<br>
-    <p class="about-text">
-        <span class="fa fa-envelope about-icon"></span> <strong><i>Like to contribute? Get in touch with me!</i></strong>
-    </p>
+   <h1 align = "center">Pavan Gurudutt</h1>
+   <p class="about-text">
+      <span class="fa fa-briefcase about-icon"></span> Java Application
+      Programmer.
+   </p>
+   <p class="about-text">
+      <span class="fa fa-graduation-cap about-icon"></span> Obtained my
+      Bachelors in <strong>Electronics and Communications</strong> from Visvesvaraya Technological University
+   </p>
+   <p class="about-text">
+      <span class="fa fa-code about-icon"></span> Lately, I started writing <strong>Java Spring
+      Boot and Spring Cloud based tutorials</strong> to learn and to help others.
+   </p>
+   <p class="about-text">
+      <span class="fa fa-globe about-icon"></span> Grew up in <strong><i>Bangalore,
+      India</i></strong>
+   </p>
+   <br>
+   <p class="about-text">
+      <span class="fa fa-envelope about-icon"></span> <strong><i>Like to contribute? Get in touch with me!</i></strong>
+   </p>
 </div>
+<form class="wj-contact" action="https://formspree.io/{{ site.formspree_io_id }}" method="POST">
+   <input type="email" name="_replyto" placeholder="Email Address">
+   <textarea type="text" name="content" rows="4" placeholder="Message"></textarea>
+   <input type="hidden" name="_next" value="/contactresponse/" />
+   <input type="hidden" name="_subject" value="Submission from Codeaches website">
+   <input type="text" name="_gotcha" style="display:none">
+   <div class="form-actions">
+      <button type="submit" class="btn test">Send Email</button>
+   </div>
+</form>
